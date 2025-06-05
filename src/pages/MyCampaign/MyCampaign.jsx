@@ -4,7 +4,7 @@
 const MyCampaign = () => {
     return (
         <div className="w-11/12 mx-auto">
-            <p>This is my campaign page</p>
+            <p>My campaign page</p>
             
         </div>
     );

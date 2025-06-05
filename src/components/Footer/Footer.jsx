@@ -8,14 +8,15 @@ const Footer = () => {
             <footer className="bg-white">
                 <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
                     <div className="lg:flex lg:items-start lg:gap-8">
-                       
+
                         <div className="mt-8 grid grid-cols-2 gap-8 lg:mt-0 lg:grid-cols-5 lg:gap-y-16">
                             <div className="col-span-2">
                                 <div>
+                                      <h2 className=" text-2xl text-green-400 font-bold">BD-CrowdFunding</h2>
                                     <h2 className="text-2xl font-bold text-gray-900">Get the latest news!</h2>
 
                                     <p className="mt-4 text-gray-500">
-                                       Stay informed, stay inspired — discover trending campaigns and impactful stories from us.
+                                        Stay informed, stay inspired — discover trending campaigns and impactful stories from us.
                                     </p>
                                 </div>
                             </div>
@@ -106,26 +107,24 @@ const Footer = () => {
                             </div>
 
                             <div className="col-span-2 sm:col-span-1">
-                                <p className="font-medium text-gray-900">Legal</p>
+                                <p className="font-medium text-gray-900">Resources</p>
 
                                 <ul className="mt-6 space-y-4 text-sm">
                                     <li>
-                                        <a href="#" className="text-gray-700 transition hover:opacity-75"> Accessibility </a>
+                                        <a href="#" className="text-gray-700 transition hover:opacity-75">How It Woks </a>
                                     </li>
 
                                     <li>
-                                        <a href="#" className="text-gray-700 transition hover:opacity-75"> Returns Policy </a>
+                                        <a href="#" className="text-gray-700 transition hover:opacity-75"> Mission</a>
                                     </li>
 
                                     <li>
-                                        <a href="#" className="text-gray-700 transition hover:opacity-75"> Refund Policy </a>
+                                        <a href="#" className="text-gray-700 transition hover:opacity-75">Ask A Question </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="text-gray-700 transition hover:opacity-75">Project Story</a>
                                     </li>
 
-                                    <li>
-                                        <a href="#" className="text-gray-700 transition hover:opacity-75">
-                                            Hiring-3 Statistics
-                                        </a>
-                                    </li>
                                 </ul>
                             </div>
 
@@ -138,7 +137,7 @@ const Footer = () => {
                                     </li>
 
                                     <li>
-                                        <a href="#" className="text-gray-700 transition hover:opacity-75"> SEO Infographics </a>
+                                        <a href="#" className="text-gray-700 transition hover:opacity-75"> Our Campaigns </a>
                                     </li>
                                 </ul>
                             </div>
