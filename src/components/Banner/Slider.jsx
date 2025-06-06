@@ -9,12 +9,12 @@ const slides = [
   },
   {
     id: 2,
-    image: "https://i.postimg.cc/W4S3N5Qx/2.jpg",
+    image: "https://i.postimg.cc/dtm5HQYm/10.jpg",
     text: "Together, We Can Close the Health Gap!"
   },
   {
     id: 3,
-    image: "https://i.postimg.cc/Xq5BYwKF/3.png",
+    image: "https://i.postimg.cc/B6TFS6Nm/12.jpg",
     text: "Crowdfunding: An emerging financing alternative"
   }
 ];

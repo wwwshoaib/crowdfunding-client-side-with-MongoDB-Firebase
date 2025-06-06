@@ -13,6 +13,7 @@ import MyCampaign from "../pages/MyCampaign/MyCampaign";
 import MyDonations from "../pages/MyDonations/MyDonations";
 import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
+import ASuccessStory from "../components/ASuccessStory/ASuccessStory";
 
  export const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ import Login from "../pages/Login/Login";
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/readASuccess",
+        element: <ASuccessStory></ASuccessStory>,
       },
     ],
   },

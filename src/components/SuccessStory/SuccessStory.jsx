@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 const SuccessStory = () => {
     return (
         <div>
@@ -10,8 +11,8 @@ const SuccessStory = () => {
                 <div className="w-full h-64 lg:w-1/2 lg:h-auto">
                     <img
                         className="h-full w-full object-cover"
-                        src="https://picsum.photos/id/1018/2000"
-                        alt="Winding mountain road"
+                        src="https://i.postimg.cc/T2NSj3Ty/cover-photo1.jpg"
+                        alt=" Getting my tuition fees"
                     />
                 </div>
                 {/* Close Image Column */}
@@ -21,20 +22,19 @@ const SuccessStory = () => {
                     {/* Text Wrapper */}
                     <div className="flex flex-col p-12 md:px-16">
                         <h2 className="text-2xl font-medium uppercase text-green-800 lg:text-4xl">
-                            Winding Mountain Road
+                            Getting my tuition fees
                         </h2>
                         <p className="mt-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.
+                           As a student in Chittagong, I crowdfunded my tuition fees. I never thought strangers would care so much. This platform changed my life. 
                         </p>
                         {/* Button Container */}
                         <div className="mt-8">
                             <a
-                                href="#"
+                              
                                 className="inline-block w-full text-center text-lg font-medium text-gray-100 bg-green-600 border-solid border-2 border-gray-600 py-4 px-10 hover:bg-green-800 hover:shadow-md md:w-48"
                             >
-                                Read More
+                              <Link to="/readASuccess">Read More</Link>;
+
                             </a>
                         </div>
                     </div>

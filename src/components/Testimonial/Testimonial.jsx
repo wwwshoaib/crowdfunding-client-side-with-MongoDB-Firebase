@@ -95,7 +95,7 @@ const Testimonial = () => {
                     <h2 className="text-3xl font-semibold text-gray-800 mb-4">Client Testimonials</h2>
                     <div className="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
                     <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                        Hear what our customers say about their experience with our products and services.
+                        Hear what our customers say about their experience with our services.
                     </p>
                 </div>
 
@@ -111,29 +111,29 @@ const Testimonial = () => {
                         <div id="testimonial-track" className="flex transition-transform duration-500 ease-in-out">
                             {/* Map over testimonials for better scalability */}
                             {[{
-                                name: "Sarah Johnson",
-                                title: "Marketing Director, TechCorp",
-                                image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80",
+                                name: "Alia Begum",
+                                title: "SME Employee",
+                                image: "https://i.postimg.cc/gjBNVQNC/5.jpg",
                                 rating: 5,
-                                text: "The service was exceptional from start to finish. The team went above and beyond to deliver exactly what we needed."
+                                text: "Thanks to this platform, I raised enough funds to launch my eco-friendly bag business in Dhaka. The support I received from donors was overwhelming. Highly recommended for entrepreneurs!"
                             }, {
-                                name: "Michael Chen",
-                                title: "CTO, InnovateSoft",
-                                image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80",
+                                name: "Milton Khandoker",
+                                title: "A Tailor",
+                                image: "https://i.postimg.cc/8chL5Yxd/6.jpg",
                                 rating: 4.5,
-                                text: "We've seen a 40% increase in productivity since implementing their solution. The onboarding process was seamless."
+                                text: "After my father’s surgery, we were in debt. Crowdfunding helped us pay the bills. I’m truly grateful to everyone who donated. It restored our hope during a dark time."
                             }, {
-                                name: "Emma Rodriguez",
-                                title: "CEO, DesignHub",
-                                image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80",
+                                name: "Dalia Khatun",
+                                title: "Student",
+                                image: "https://i.postimg.cc/x8tTtymD/7.jpg",
                                 rating: 4,
-                                text: "Their attention to detail and customer support is unmatched. We've partnered with them for all our digital needs."
+                                text: "As a student in Chittagong, I crowdfunded my tuition fees. I never thought strangers would care so much. This platform changed my life. Thank you for making education possible."
                             }, {
-                                name: "David Wilson",
-                                title: "Operations Manager, GlobalLogix",
-                                image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80",
+                                name: "Md. Shoaib Ahmed",
+                                title: "Teacher, Aspiring Web Developer",
+                                image: "https://i.postimg.cc/PJhP65FZ/decd0968-78c3-417b-9c38-8f9173bf23b5.jpg",
                                 rating: 5,
-                                text: "The ROI was evident within the first quarter. Their platform has become indispensable to our operations."
+                                text: "Our flood relief initiative in Sylhet was successful because of crowdfunding. The quick response and ease of use made it simple to gather help when we needed it most."
                             }].map((testimonial, index) => (
                                 <div key={index} className="testimonial-card flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-4 animate-fade">
                                     <div className="bg-white p-8 rounded-xl shadow-lg h-full border border-gray-100">
@@ -146,7 +146,7 @@ const Testimonial = () => {
                                                 })}
                                             </div>
                                         </div>
-                                        <p className="text-gray-600 mb-6 italic">"{testimonial.text}"</p>
+                                        <p className="text-gray-600 mb-6 italic"> &quot;{testimonial.text}&quot;</p>
                                         <div className="flex items-center">
                                             <img src={testimonial.image} alt={testimonial.name} className="w-14 h-14 rounded-full object-cover mr-4 border-2 border-indigo-100" />
                                             <div>
