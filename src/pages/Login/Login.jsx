@@ -31,7 +31,7 @@ const Login = () => {
                                         name="email"
                                         type="email"
                                         required
-                                        placeholder="user@example.com"
+                                        placeholder="Type email"
                                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                                     />
                                 </div>

@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../../providers/AuthProviders";
 
 const Register = () => {
+    const {createUser} = useContext(AuthContext);
     const handleSignUp = e => {
         e.preventDefault();
         const form = e.target;
@@ -8,8 +11,15 @@ const Register = () => {
         const email = e.target.email.value;
         const profilePicture = e.target.photo.value;
         const password = e.target.password.value;
-        console.log({ name, email, profilePicture, password });
-        form.reset();
+       // console.log({ name, email, profilePicture, password });
+       // form.reset();
+       createUser(email, password)
+       .then(result => {
+        console.log(result.user)
+       })
+       .catch(error => {
+        console.log('Error', error)
+       })
     };
 
     return (
@@ -46,7 +56,7 @@ const Register = () => {
                                     <input
                                         id="name"
                                         name="name"
-                                        placeholder="John Doe"
+                                        placeholder="Type here name"
                                         type="text"
                                         required
                                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
@@ -56,13 +66,13 @@ const Register = () => {
 
                             <div className="mt-6">
                                 <label htmlFor="email" className="block text-sm font-medium leading-5 text-gray-700">
-                                    Email address
+                                    Email Address
                                 </label>
                                 <div className="mt-1 relative rounded-md shadow-sm">
                                     <input
                                         id="email"
                                         name="email"
-                                        placeholder="user@example.com"
+                                        placeholder="Type here email address"
                                         type="email"
                                         required
                                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
@@ -71,22 +81,23 @@ const Register = () => {
                             </div>
 
                             {/* photo */}
+                          
                             <div className="mt-6">
-                                <label htmlFor="profileImage" className="block text-sm font-medium leading-5 text-gray-700">
-                                    Upload Profile Image
+                                <label htmlFor="password" className="block text-sm font-medium leading-5 text-gray-700">
+                                    Photo URL
                                 </label>
                                 <div className="mt-1 rounded-md shadow-sm">
                                     <input
-                                        id="profileImage"
+                                        id="photo"
                                         name="photo"
-                                        type="file"
-                                        accept="image/*"
+                                        type="text"
+                                           placeholder="Give here photo URL"
                                         required
-                                        className="block w-full text-sm text-gray-700 border border-gray-300 rounded-md cursor-pointer focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out"
+                                        className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                                     />
                                 </div>
                             </div>
-
+                            {/* password */}
                             <div className="mt-6">
                                 <label htmlFor="password" className="block text-sm font-medium leading-5 text-gray-700">
                                     Password
@@ -96,6 +107,7 @@ const Register = () => {
                                         id="password"
                                         name="password"
                                         type="password"
+                                            placeholder="password"
                                         required
                                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                                     />
