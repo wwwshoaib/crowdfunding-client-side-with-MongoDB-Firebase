@@ -1,15 +1,15 @@
 
 const Cards = () => {
     return (
-        <div className="max-w-screen-xl mx-auto p-16">
+        <div className="">
             <div className="sm:grid lg:grid-cols-3 sm:grid-cols-2 gap-10">
                 {[...Array(6)].map((_, index) => (
                     <div
                         key={index}
                         className="hover:bg-green-200 hover:text-black transition duration-300 max-w-sm rounded overflow-hidden shadow-lg"
                     >
-                        <div className="py-4 px-8">
-                           
+                        <div className="py-4 px-2 md:px-2">
+
                             <a href="#">
                                 <h4 className="text-lg mb-3 font-semibold">How to be effective at working remotely?</h4>
                             </a>
@@ -23,10 +23,10 @@ const Cards = () => {
                                 className="w-100"
                             />
                             <hr className="mt-4" />
-                           {/* button: see more */}
-                           <div className="text-center bg-violet-400 px-5 py-2">
-                            <button>See More ... </button>
-                           </div>
+                            {/* button: see more */}
+                            <div className="text-center bg-violet-400 px-5 py-2">
+                                <button>See More ... </button>
+                            </div>
                         </div>
                     </div>
                 ))}
