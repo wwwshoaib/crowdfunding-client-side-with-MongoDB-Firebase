@@ -61,7 +61,7 @@ const Footer = () => {
                                     </li>
 
                                     <li>
-                                        <a href="#" className="text-gray-700 transition hover:opacity-75">New Product</a>
+                                        <a href="#" className="text-gray-700 transition hover:opacity-75">Agriculture</a>
                                     </li>
 
                                     <li>
