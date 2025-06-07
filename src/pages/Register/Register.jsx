@@ -1,28 +1,57 @@
 import { useContext } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../providers/AuthProviders";
 import toast from 'react-hot-toast';
 
+
 const Register = () => {
-    const {createUser} = useContext(AuthContext);
+    const {createUser,  updateUserProfile} = useContext(AuthContext);
+    const navigate = useNavigate();
     const handleSignUp = e => {
         e.preventDefault();
         const form = e.target;
         const name = e.target.name.value;
         const email = e.target.email.value;
-        const profilePicture = e.target.photo.value;
+        const photoURL = e.target.photo.value;
         const password = e.target.password.value;
        // console.log({ name, email, profilePicture, password });
+        // Minimum password length validation
+        if (password.length < 6) {
+            toast.error("Password must be at least 6 characters!");
+            return;
+        } 
+         
+
+        // Corrected RegEx Validation
+        let passwordRegEx = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+        if (!passwordRegEx.test(password)) {
+            toast.error(
+                "Your password must include at least one uppercase letter, one special character, and six digits."
+            );
+            return;
+        }
       
        createUser(email, password)
-       .then(result => {
-        console.log(result.user)
-        toast.success('User created successfully!');
-       })
+        .then((result) => {
+               console.log(result.user)
+                return updateUserProfile({
+                    displayName: name,
+                    photoURL: photoURL,
+                });
+            })
+            .then(() => {
+                navigate("/");
+                toast.success("User created successfully!")
+            })
        .catch(error => {
         console.log('Error', error)
         toast.error('Something went wrong!');
        })
+
+       
+
+       
 
         form.reset();
     };

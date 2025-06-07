@@ -1,27 +1,32 @@
 import { useContext } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../providers/AuthProviders";
 import toast from "react-hot-toast";
 const Login = () => {
-    const {signInUser} = useContext(AuthContext);
-     const handleLogin = e => {
+    const { signInUser } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const handleLogin = e => {
         e.preventDefault();
         const form = e.target;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log({ email, password});
+      //  console.log({ email, password });
         //sign in user
         signInUser(email, password)
-        .then(result => {
-            console.log(result.user)
-            toast.success('log in successfully!')
-            return;
-        })
-        .then(error => {
-            console.log('Error:', error.message);
-            toast.error('Something went wrong!')
+            .then(result => {
+                console.log(result.user)
 
-        })
+                return;
+            })
+            .then(() => {
+                navigate("/");
+                toast.success('log in successfully!')
+            })
+            .then(error => {
+                console.log('Error:', error.message);
+                toast.error('Something went wrong!')
+
+            })
         form.reset();
     };
     return (
@@ -80,8 +85,8 @@ const Login = () => {
                         </form>
                     </div>
                     {/*  */}
-                     <p className="mt-2 text-center text-sm leading-5 text-gray-500 max-w">
-                      Don’t have an account? , &nbsp;
+                    <p className="mt-2 text-center text-sm leading-5 text-gray-500 max-w">
+                        Don’t have an account? , &nbsp;
                         <Link
                             to="/register"
                             className="font-medium text-blue-600 hover:text-blue-500 focus:outline-none focus:underline transition ease-in-out duration-150"

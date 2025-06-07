@@ -1,21 +1,33 @@
 import { NavLink } from "react-router";
-
-
-
+import toast from "react-hot-toast";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProviders";
+import { FaRegUser } from "react-icons/fa6";
+import { Link } from "react-router";
 
 const Navbar = () => {
+    const { user, signOut } = useContext(AuthContext);
+
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/allCampaigns">All Campaigns</NavLink></li>
         <li><NavLink to="/addNewCampaign">Add New Campaign</NavLink></li>
         <li><NavLink to="/myCampaign">My Campaign</NavLink></li>
         <li><NavLink to="/myDonations">My Donations</NavLink></li>
-        <li><NavLink to="/register">Register</NavLink></li>
-        <li><NavLink to="/login">Log in</NavLink></li>
-
     </>
+
+    //sign out a user
+    const handleSignOut = () => {
+        signOut()
+            .then(() => {
+                toast.success('User sign out successfully')
+            })
+            .catch(error => {
+                console.log('Error:', error.message)
+            })
+    }
     return (
-        <div className="w-11/12 mx-auto">
+        <div className="w-full mx-auto">
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -39,7 +51,7 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-2xl text-green-400 font-bold">BD-CrowdFunding</a>
+                    <a className="btn btn-ghost text-xl md:text-2xl text-green-400 font-bold">BD-CrowdFunding</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -47,7 +59,32 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
+                   <div className="login flex gap-2 items-center">
+                    <div>
+                        {
+                            user && user?.email ?
+                                <div>
+                                    <img className="w-10 h-10 rounded-full"
+                                        src={user?.photoURL} alt="" />
+                                    <p className="text-[10px]">{user?.displayName}</p>
+                                </div>
+                                :
+                                <FaRegUser className="size-4 md:size-5"></FaRegUser>
 
+                        }
+
+                    </div>
+                    {
+                        (user && user?.email) ?
+                            <Link onClick={handleSignOut} to="/" className="btn  bg-green-200 ">Log Out</Link>
+                            :
+                            <>
+                                <Link to="login" className="btn  bg-green-200 ">Login</Link>
+                                <Link to="register" className=" btn  bg-green-200 ">Register</Link>
+                            </>
+
+                    }
+                </div>
                 </div>
             </div>
         </div>
