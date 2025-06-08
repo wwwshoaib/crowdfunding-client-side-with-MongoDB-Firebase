@@ -11,7 +11,7 @@ const Navbar = () => {
 
     const links = <>
         <li className=" hover:text-green-400"><NavLink to="/">Home</NavLink></li>
-        <li className=" hover:text-green-400"><NavLink to="/allCampaigns">All Campaigns</NavLink></li>
+        <li className=" hover:text-green-400"><NavLink to="/campaigns">All Campaigns</NavLink></li>
         <li className=" hover:text-green-400"><NavLink to="/addCampaign">Add New Campaign</NavLink></li>
         <li className=" hover:text-green-400"><NavLink to="/myCampaign">My Campaign</NavLink></li>
         <li className=" hover:text-green-400" ><NavLink to="/myDonations">My Donations</NavLink></li>
