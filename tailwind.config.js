@@ -1,5 +1,6 @@
 import daisyui from 'daisyui';
 
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -7,9 +8,18 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        poppins: [ "Poppins", "sans-serif"],
+        caveat: ["Caveat", ],
+        indie: ["Indie Flower"],
+        dancing: ["Dancing Script"],
+        delius: ["Delius" ],
+      },
+    },
   },
   plugins: [
     daisyui,
+  
   ],
 };

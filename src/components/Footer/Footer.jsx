@@ -12,8 +12,9 @@ const Footer = () => {
                         <div className="mt-8 grid grid-cols-2 gap-8 lg:mt-0 lg:grid-cols-5 lg:gap-y-16">
                             <div className="col-span-2">
                                 <div>
-                                      <h2 className=" text-2xl text-green-400 font-bold">BD-CrowdFunding</h2>
-                                    <h2 className="text-2xl font-bold text-gray-900">Get the latest news!</h2>
+                                    <a className="hover:text-cyan-500 text-2xl md:text-4xl font-dancing
+                   text-violet-500 font-bold">CrowdFunding</a>
+                                    <h2 className="text-xl font-bold text-gray-900">Get the latest news!</h2>
 
                                     <p className="mt-4 text-gray-500">
                                         Stay informed, stay inspired — discover trending campaigns and impactful stories from us.
@@ -145,7 +146,7 @@ const Footer = () => {
                             <ul className="col-span-2 flex justify-start gap-6 lg:col-span-5 lg:justify-end">
                                 <li>
                                     <a
-                                        href="#"
+                                        href="https://www.facebook.com/"
                                         rel="noreferrer"
                                         target="_blank"
                                         className="text-gray-700 transition hover:opacity-75"
@@ -164,7 +165,7 @@ const Footer = () => {
 
                                 <li>
                                     <a
-                                        href="#"
+                                        href="https://www.instagram.com/"
                                         rel="noreferrer"
                                         target="_blank"
                                         className="text-gray-700 transition hover:opacity-75"
@@ -183,7 +184,7 @@ const Footer = () => {
 
                                 <li>
                                     <a
-                                        href="#"
+                                        href="https://x.com/home"
                                         rel="noreferrer"
                                         target="_blank"
                                         className="text-gray-700 transition hover:opacity-75"
@@ -200,7 +201,7 @@ const Footer = () => {
 
                                 <li>
                                     <a
-                                        href="#"
+                                        href="https://github.com/wwwshoaib"
                                         rel="noreferrer"
                                         target="_blank"
                                         className="text-gray-700 transition hover:opacity-75"
@@ -219,7 +220,7 @@ const Footer = () => {
 
                                 <li>
                                     <a
-                                        href="#"
+                                        href="https://bd-crowdfunding.web.app/"
                                         rel="noreferrer"
                                         target="_blank"
                                         className="text-gray-700 transition hover:opacity-75"
@@ -242,6 +243,7 @@ const Footer = () => {
                     <div className="mt-8 border-t border-gray-100 pt-8">
                         <div className="sm:flex sm:justify-between">
                             <p className="text-xs text-gray-500">&copy; 2025. CrowdFunding. All rights reserved.</p>
+                            <p className="text-xs text-gray-500">Designed & Developed by: Md. Shoaib Ahmed</p>
 
                             <ul className="mt-8 flex flex-wrap justify-start gap-4 text-xs sm:mt-0 lg:justify-end">
                                 <li>

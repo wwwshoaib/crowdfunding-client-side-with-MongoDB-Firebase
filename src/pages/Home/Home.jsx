@@ -11,7 +11,7 @@ const Home = () => {
             {/* Section: Running campaign */}
             <div>
                 <div className="text-center my-10">
-                    <h2 className="text-3xl font-semibold text-gray-800 mb-4">Running Campaign</h2>
+                    <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4">Running Campaign</h2>
                     <div className="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
                 </div>
                 <Cards></Cards>
@@ -19,7 +19,7 @@ const Home = () => {
             {/* Section: Success Story */}
             <div>
                 <div className="text-center my-10">
-                    <h2 className="text-3xl font-semibold text-gray-800 mb-4">Success Story</h2>
+                    <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4">Success Story</h2>
                     <div className="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
                 </div>
                 <SuccessStory></SuccessStory>

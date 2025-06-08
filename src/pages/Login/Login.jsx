@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../providers/AuthProviders";
 import toast from "react-hot-toast";
 const Login = () => {
-    const { signInUser } = useContext(AuthContext);
+    const { signInUser,  } = useContext(AuthContext);
     const navigate = useNavigate();
     const handleLogin = e => {
         e.preventDefault();

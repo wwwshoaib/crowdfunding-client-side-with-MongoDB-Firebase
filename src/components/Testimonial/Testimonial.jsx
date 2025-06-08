@@ -92,7 +92,7 @@ const Testimonial = () => {
         <div className="bg-gray-50 min-h-screen flex items-center justify-center p-4">
             <div className="max-w-7xl w-full mx-auto px-4">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl font-semibold text-gray-800 mb-4">Client Testimonials</h2>
+                    <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4">Client Testimonials</h2>
                     <div className="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
                     <p className="text-xl text-gray-600 max-w-2xl mx-auto">
                         Hear what our customers say about their experience with our services.
