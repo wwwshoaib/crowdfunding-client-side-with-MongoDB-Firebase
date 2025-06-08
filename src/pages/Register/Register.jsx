@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 
 
 const Register = () => {
-    const {createUser,  updateUserProfile} = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
     const handleSignUp = e => {
         e.preventDefault();
@@ -14,13 +14,28 @@ const Register = () => {
         const email = e.target.email.value;
         const photoURL = e.target.photo.value;
         const password = e.target.password.value;
-       // console.log({ name, email, profilePicture, password });
+        const user = { name, email, photoURL, password };
+        console.log(user)
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                      toast.success("User created successfully!")   
+                }
+        })
+        // console.log({ name, email, profilePicture, password });
         // Minimum password length validation
         if (password.length < 6) {
             toast.error("Password must be at least 6 characters!");
             return;
-        } 
-         
+        }
+
 
         // Corrected RegEx Validation
         let passwordRegEx = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
@@ -31,10 +46,10 @@ const Register = () => {
             );
             return;
         }
-      
-       createUser(email, password)
-        .then((result) => {
-               console.log(result.user)
+        //  create user for firebase authentication 
+        createUser(email, password)
+            .then((result) => {
+                console.log(result.user)
                 return updateUserProfile({
                     displayName: name,
                     photoURL: photoURL,
@@ -42,16 +57,16 @@ const Register = () => {
             })
             .then(() => {
                 navigate("/");
-                toast.success("User created successfully!")
+              
             })
-       .catch(error => {
-        console.log('Error', error)
-        toast.error('Something went wrong!');
-       })
+            .catch(error => {
+                console.log('Error', error)
+                toast.error('Something went wrong!');
+            })
 
-       
 
-       
+
+
 
         form.reset();
     };
@@ -115,7 +130,7 @@ const Register = () => {
                             </div>
 
                             {/* photo */}
-                          
+
                             <div className="mt-6">
                                 <label htmlFor="password" className="block text-sm font-medium leading-5 text-gray-700">
                                     Photo URL
@@ -125,7 +140,7 @@ const Register = () => {
                                         id="photo"
                                         name="photo"
                                         type="text"
-                                           placeholder="Give here photo URL"
+                                        placeholder="Give here photo URL"
                                         required
                                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                                     />
@@ -141,7 +156,7 @@ const Register = () => {
                                         id="password"
                                         name="password"
                                         type="password"
-                                            placeholder="password"
+                                        placeholder="password"
                                         required
                                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                                     />

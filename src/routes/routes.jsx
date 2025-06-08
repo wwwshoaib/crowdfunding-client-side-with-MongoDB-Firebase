@@ -7,13 +7,13 @@ import {
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import HomeLayout from "../layouts/HomeLayout";
 import Home from "../pages/Home/Home";
-import AddCampaign from "../pages/Home/AddCampaign/AddCampaign";
 import AllCampaign from "../pages/AllCampaigns/AllCampaign";
 import MyCampaign from "../pages/MyCampaign/MyCampaign";
 import MyDonations from "../pages/MyDonations/MyDonations";
 import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import ASuccessStory from "../components/ASuccessStory/ASuccessStory";
+import AddCampaign from "../pages/AddCampaign/AddCampaign";
 
  export const router = createBrowserRouter([
   {
@@ -30,8 +30,8 @@ import ASuccessStory from "../components/ASuccessStory/ASuccessStory";
         element: <AllCampaign></AllCampaign>
       },
       {
-        path: "/addNewCampaign",
-        element: <AddCampaign></AddCampaign>
+        path: "/addCampaign",
+        element: <AddCampaign></AddCampaign>,
       },
       {
         path: "/myCampaign",
