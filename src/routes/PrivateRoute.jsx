@@ -12,7 +12,8 @@ import PropTypes from "prop-types";
 const PrivateRoute = ({children}) => {
     const { user, loading } = useContext(AuthContext);
     const location = useLocation();
-    //console.log(location)
+    console.log(location)
+    
   
     if(loading) {
         return <Loading></Loading>
@@ -22,7 +23,7 @@ const PrivateRoute = ({children}) => {
     if ( user && user?.email) {
         return children;
     }
-    return ( <Navigate   state={location.pathname} to = {"/auth/login"}></Navigate> );
+    return ( <Navigate   state={location.pathname} to = {"/login"}></Navigate> );
 };
 PrivateRoute.propTypes = {
     children:PropTypes.node.isRequired

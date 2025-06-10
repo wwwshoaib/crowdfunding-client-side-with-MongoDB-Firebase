@@ -50,19 +50,19 @@ const Footer = () => {
 
                                 <ul className="mt-6 space-y-4 text-sm">
                                     <li>
-                                        <a href="#" className="text-gray-700 transition hover:opacity-75">Education </a>
+                                        <a href="#" className="text-gray-700 transition hover:opacity-75">Personal Issue</a>
                                     </li>
 
                                     <li>
-                                        <a href="#" className="text-gray-700 transition hover:opacity-75">Technology </a>
+                                        <a href="#" className="text-gray-700 transition hover:opacity-75">Startup</a>
                                     </li>
 
                                     <li>
-                                        <a href="#" className="text-gray-700 transition hover:opacity-75">Health & Medicine </a>
+                                        <a href="#" className="text-gray-700 transition hover:opacity-75">Business</a>
                                     </li>
 
                                     <li>
-                                        <a href="#" className="text-gray-700 transition hover:opacity-75">Agriculture</a>
+                                        <a href="#" className="text-gray-700 transition hover:opacity-75">Creative Ideas</a>
                                     </li>
 
                                     <li>

@@ -12,7 +12,7 @@ const Campaign = ({ campaign }) => {
   };
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-4 h-[560px] flex flex-col">
+    <div className="bg-white shadow-md rounded-lg p-4 h-[600px] flex flex-col">
       <div>
         <img
           src={photoURL}
@@ -25,7 +25,7 @@ const Campaign = ({ campaign }) => {
           <strong>Campaign Type:</strong> {campaign_type}
         </p>
 
-        <p className="text-sm text-gray-600 ">{getShortDescription(description)}
+        <p className="text-sm text-gray-600 ">{getShortDescription(description)} &nbsp;
              {/* Link button to details page */}
         <Link
           to={`/campaign/${_id}`}

@@ -1,23 +1,33 @@
 
 
 
+import { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router';
+import { AuthContext } from '../../providers/AuthProviders';
 
 
 const AddCampaign = () => {
+
+    const navigate = useNavigate();
+   const { user } = useContext(AuthContext);
+    console.log(user);
 
 
     const handleAddNewCampaign = e => {
         e.preventDefault();
         const form = e.target;
+        const userName = user.displayName;
+        const email = user.email;
         const photoURL = e.target.photo.value;
         const campaign_title = e.target.campaign_title.value;
         const campaign_type = e.target.campaign_type.value;
         const description = e.target.description.value;
         const donation_amount = e.target.donation_amount.value;
         const deadline = e.target.deadline.value;
-        const newCampaign = { photoURL, campaign_title, campaign_type, description, donation_amount, deadline };
-        console.log(newCampaign)
+
+        const newCampaign = { userName, email, photoURL, campaign_title, campaign_type, description, donation_amount, deadline };
+       // console.log(newCampaign)
         fetch('http://localhost:5000/addCampaign', {
             method: 'POST',
             headers: {
@@ -29,6 +39,9 @@ const AddCampaign = () => {
             .then(data => {
                 if (data.insertedId) {
                     toast.success("A New Campaign created successfully!")
+                      navigate("/campaigns");
+
+
                 }
             })
 
@@ -169,7 +182,7 @@ const AddCampaign = () => {
 
                             <div className="mt-6">
                                 <span className="block w-full rounded-md shadow-sm">
-                                    <button
+                                    <button 
                                         type="submit"
                                         className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
                                     >

@@ -3,11 +3,6 @@ import Dropdown from "../DropDown/DropDown";
 import { Link } from "react-router";
 
 const Navbar = () => {
-  
-
-    
-
-    //console.log(createUser)
 
     const links = <>
         <li className=" hover:text-green-400"><NavLink to="/">Home</NavLink></li>
@@ -17,19 +12,7 @@ const Navbar = () => {
         <li className=" hover:text-green-400" ><NavLink to="/myDonations">My Donations</NavLink></li>
     </>
 
-    /**
-     * 
-     * //sign out a user
-    const handleSignOut = () => {
-        signOut()
-            .then(() => {
-                toast.success('User sign out successfully')
-            })
-            .catch(error => {
-                console.log('Error:', error.message)
-            })
-    }
-     */
+  
     return (
         <div className="w-full mx-auto">
             <div className="navbar bg-base-100">
@@ -65,6 +48,7 @@ const Navbar = () => {
                         {/* log in and log out button  */}
                         
                         {/*  */}
+                      
                     </ul>
                 </div>
                 <div className="navbar-end">
