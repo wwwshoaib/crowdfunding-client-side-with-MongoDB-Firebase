@@ -5,7 +5,9 @@ import { AuthContext } from "../../providers/AuthProviders";
 import toast from "react-hot-toast";
 
 const Dropdown = () => {
-  const { user, signOutUser } = useContext(AuthContext);
+  const { user, signOutUser, } = useContext(AuthContext);
+
+  console.log(user)
 
   const handleSignOut = () => {
     signOutUser()
@@ -19,20 +21,27 @@ const Dropdown = () => {
 
   return (
     <div className="items-center justify-center">
-      <div className="group relative cursor-pointer py-2" key={user?.uid || 'guest'}>
+      <div className="group relative cursor-pointer py-2" >
         <div className="flex items-center justify-between space-x-5 bg-white px-4">
           <button className="menu-hover py-2 text-xl md:text-3xl text-black mx-4">
             {user ? (
               <>
-                <img
-                  className="w-9 h-9 rounded-full"
-                  src={user?.photoURL}
-                  alt="User"
-                />
-                <p className="text-sm md:text-md">
-                  <strong>{user?.displayName}</strong>
-                </p>
+                {user ? (
+                  <div className="flex items-center gap-2">
+                    <img
+                      className="w-9 h-9 rounded-full object-cover"
+                      src={user.photoURL}
+                      alt="User"
+                    />
+                    <p className="text-sm md:text-md">
+                      <strong>{user.displayName || "User"}</strong>
+                    </p>
+                  </div>
+                ) : (
+                  <div className="text-sm text-gray-500">Loading user info...</div>
+                )}
               </>
+
             ) : (
               <CgProfile />
             )}
