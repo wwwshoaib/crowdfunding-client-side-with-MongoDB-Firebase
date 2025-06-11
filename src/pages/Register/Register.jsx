@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 
 
 const Register = () => {
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, setUser,  updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
     const handleSignUp = e => {
         e.preventDefault();
@@ -16,19 +16,7 @@ const Register = () => {
         const password = e.target.password.value;
         const user = { name, email, photoURL, password };
         console.log(user)
-        fetch('http://localhost:5000/users', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(user)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.insertedId) {
-                      toast.success("User created successfully!")   
-                }
-        })
+       
         // console.log({ name, email, profilePicture, password });
         // Minimum password length validation
         if (password.length < 6) {
@@ -46,27 +34,51 @@ const Register = () => {
             );
             return;
         }
+
+        
         //  create user for firebase authentication 
-        createUser(email, password)
-            .then((result) => {
-                console.log(result.user)
-                return updateUserProfile({
-                    displayName: name,
-                    photoURL: photoURL,
-                });
-            })
-            .then(() => {
-                navigate("/");
-              
-            })
-            .catch(error => {
-                console.log('Error', error)
-                toast.error('Something went wrong!');
-            })
+       // Creating a new user
+       createUser(email, password)
+    .then((result) => {
+        const user = result.user;
+
+        return updateUserProfile({
+            displayName: name,
+            photoURL: photoURL,
+        }).then(() => {
+            // Manually set updated user
+            const updatedUser = {
+                ...user,
+                displayName: name,
+                photoURL: photoURL,
+            };
+            setUser(updatedUser);
+
+            // Now navigate
+            navigate("/");
+        });
+    })
+    .catch((err) => {
+        console.log('Error', err.message);
+    });
 
 
+      
 
-
+      
+         fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                      toast.success("User created successfully!")   
+                }
+        })
 
         form.reset();
     };

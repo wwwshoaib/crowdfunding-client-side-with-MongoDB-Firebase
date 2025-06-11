@@ -3,30 +3,30 @@ import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../providers/AuthProviders";
 import toast from "react-hot-toast";
 const Login = () => {
-    const { signInUser  } = useContext(AuthContext);
+    const { signInUser, setUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const handleLogin = e => {
         e.preventDefault();
         const form = e.target;
         const email = e.target.email.value;
         const password = e.target.password.value;
-      //  console.log({ email, password });
+        //  console.log({ email, password });
         //sign in user
         signInUser(email, password)
             .then(result => {
-                console.log(result.user)
+                const loggedUser = result.user;
 
-                return;
-            })
-            .then(() => {
+                // Manually update user context
+                setUser(loggedUser);
+
+                toast.success('Logged in successfully!');
                 navigate("/");
-                toast.success('log in successfully!')
             })
             .catch(error => {
                 console.log('Error:', error);
-                toast.error('Something went wrong!')
+                toast.error('Something went wrong!');
+            });
 
-            })
         form.reset();
     };
     return (

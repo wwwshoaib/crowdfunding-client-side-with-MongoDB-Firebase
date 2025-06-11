@@ -28,3 +28,27 @@
                 </div>
  * 
  */
+
+                  user,
+                        loading,
+                        createUser,
+                        signInUser,
+                        signOutUser,
+                        updateUserProfile,
+                        setUser, 
+
+
+
+                        import { createContext, useEffect, useState } from "react";
+                        import PropTypes from "prop-types";
+                        import { auth } from "../firebase/firebase.config";
+                        import {
+                            createUserWithEmailAndPassword,
+                            onAuthStateChanged,
+                            signInWithEmailAndPassword,
+                            signOut,
+                            updateProfile
+                        } from "firebase/auth";
+                        
+                        export const AuthContext = createContext(null);
+                        

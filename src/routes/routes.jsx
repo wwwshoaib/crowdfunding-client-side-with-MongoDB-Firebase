@@ -14,6 +14,8 @@ import Login from "../pages/Login/Login";
 import ASuccessStory from "../components/ASuccessStory/ASuccessStory";
 import AddCampaign from "../pages/AddCampaign/AddCampaign";
 import Campaigns from "../pages/Campaigns/Campaigns";
+import PrivateRoute from "../routes/PrivateRoute"
+
 
  export const router = createBrowserRouter([
   {
@@ -32,15 +34,15 @@ import Campaigns from "../pages/Campaigns/Campaigns";
       },
       {
         path: "/addCampaign",
-        element: <AddCampaign></AddCampaign>,
+        element: <PrivateRoute><AddCampaign></AddCampaign></PrivateRoute>
       },
       {
         path: "/myCampaign",
-        element: <MyCampaign></MyCampaign>,
+        element: <PrivateRoute><MyCampaign></MyCampaign></PrivateRoute>,
       },
       {
         path: "/myDonations",
-        element: <MyDonations></MyDonations>,
+        element: <PrivateRoute><MyDonations></MyDonations></PrivateRoute>
       },
       {
         path: "/register",
