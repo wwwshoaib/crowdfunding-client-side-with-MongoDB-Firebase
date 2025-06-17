@@ -34,7 +34,7 @@ const Dropdown = () => {
                       alt="User"
                     />
                     <p className="text-sm md:text-md">
-                      <strong>{user.displayName || "User"}</strong>
+                      <strong>{user.displayName}</strong>
                     </p>
                   </div>
                 ) : (

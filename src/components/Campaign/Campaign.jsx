@@ -26,13 +26,13 @@ const Campaign = ({ campaign }) => {
         </p>
 
         <p className="text-sm text-gray-600 ">{getShortDescription(description)} &nbsp;
-             {/* Link button to details page */}
-        <Link
-          to={`/campaign/${_id}`}
-          className="font-bold"
-        >
-          See Details
-        </Link>   
+          {/* Link button to details page */}
+          <Link
+            to={`/campaign/${_id}`}
+            className="font-bold"
+          >
+            See Details
+          </Link>
         </p>
       </div>
 
@@ -46,7 +46,15 @@ const Campaign = ({ campaign }) => {
 
         <div className="text-center">
           <button className="bg-violet-500 text-white px-4 py-2 rounded hover:bg-violet-600 transition">
-            Donate Now
+           
+              <Link
+                to={`/campaign/${_id}`}
+                className="font-bold"
+              >
+                See More
+              </Link>
+            
+
           </button>
         </div>
       </div>

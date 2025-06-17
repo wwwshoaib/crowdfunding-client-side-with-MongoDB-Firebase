@@ -1,5 +1,4 @@
 import Slider from "../../components/Banner/Slider";
-import Cards from "../../components/Cards/Cards";
 import SuccessStory from "../../components/SuccessStory/SuccessStory";
 import Testimonial from "../../components/Testimonial/Testimonial";
 
@@ -14,7 +13,7 @@ const Home = () => {
                     <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4">Running Campaign</h2>
                     <div className="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
                 </div>
-                <Cards></Cards>
+               
             </div>
             {/* Section: Success Story */}
             <div>

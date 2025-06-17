@@ -7,7 +7,7 @@ import {
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import HomeLayout from "../layouts/HomeLayout";
 import Home from "../pages/Home/Home";
-import MyCampaign from "../pages/MyCampaign/MyCampaign";
+import MyCampaign from "../pages/MyCampaigns/MyCampaigns";
 import MyDonations from "../pages/MyDonations/MyDonations";
 import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
@@ -17,7 +17,8 @@ import Campaigns from "../pages/Campaigns/Campaigns";
 import PrivateRoute from "../routes/PrivateRoute"
 
 
- export const router = createBrowserRouter([
+
+export const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout />,
@@ -32,6 +33,7 @@ import PrivateRoute from "../routes/PrivateRoute"
         element: <Campaigns></Campaigns>,
         loader: () => fetch('http://localhost:5000/addCampaign'),
       },
+     
       {
         path: "/addCampaign",
         element: <PrivateRoute><AddCampaign></AddCampaign></PrivateRoute>
@@ -39,6 +41,7 @@ import PrivateRoute from "../routes/PrivateRoute"
       {
         path: "/myCampaign",
         element: <PrivateRoute><MyCampaign></MyCampaign></PrivateRoute>,
+        loader: () => fetch('http://localhost:5000/addCampaign'),
       },
       {
         path: "/myDonations",
@@ -58,5 +61,5 @@ import PrivateRoute from "../routes/PrivateRoute"
       },
     ],
   },
-  
+
 ]);
