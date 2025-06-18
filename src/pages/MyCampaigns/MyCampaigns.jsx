@@ -1,10 +1,13 @@
 import { useLoaderData } from "react-router";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
+import toast from "react-hot-toast";
 
 const MyCampaigns = () => {
-  const myCampaignData = useLoaderData();
+  const data = useLoaderData();
   const { user } = useContext(AuthContext);
+
+  const [campaignData, setCampaignData] = useState(data);
 
   if (!user?.email) {
     return (
@@ -14,16 +17,30 @@ const MyCampaigns = () => {
     );
   }
 
-  const filteredData = myCampaignData?.filter(
+  const filteredData = campaignData?.filter(
     (campaign) => campaign.email === user.email
   );
 
   const handleUpdate = (id) => {
-    console.log("Edit clicked for ID:", id);
+    console.log("Update clicked for ID:", id);
   };
 
+  // handle delete operation
   const handleDelete = (id) => {
-    console.log("Delete clicked for ID:", id);
+    fetch(`http://localhost:5000/addcampaign/${id}`, {
+      method: "DELETE",
+    })
+    .then(res => res.json())
+    .then(result => {
+      const newResult = campaignData.filter((campaign) => id!= campaign._id);
+      setCampaignData(newResult);
+      if (result.deletedCount>0) {
+            toast.success("Data deleted successfully!");
+          } else {
+            toast.error("Something went wrong.");
+          }
+    })
+
   };
 
   return (

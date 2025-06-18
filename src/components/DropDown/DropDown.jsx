@@ -6,9 +6,7 @@ import toast from "react-hot-toast";
 
 const Dropdown = () => {
   const { user, signOutUser, } = useContext(AuthContext);
-
-  console.log(user)
-
+  // handle sign out
   const handleSignOut = () => {
     signOutUser()
       .then(() => {
@@ -26,7 +24,7 @@ const Dropdown = () => {
           <button className="menu-hover py-2 text-xl md:text-3xl text-black mx-4">
             {user ? (
               <>
-                {user ? (
+                {user? (
                   <div className="flex items-center gap-2">
                     <img
                       className="w-9 h-9 rounded-full object-cover"
