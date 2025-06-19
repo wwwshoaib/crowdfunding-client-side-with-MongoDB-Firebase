@@ -13,12 +13,12 @@ https://bd-crowdfunding.web.app/
 
 ## key features of the project:
 
-  . Data can be managed dynamically using MongoDB
-  . Firebase authentication (login, register)
-  . Implementation of private route
-  . Context API
-  . Device-responsive
-  . Single Page Application (SPA)
+  - Data can be managed dynamically using MongoDB
+  - Firebase authentication (login, register)
+  - Implementation of private route
+  - Context API
+  - Device-responsive
+  - Single Page Application (SPA)
   
 
   
