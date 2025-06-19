@@ -13,7 +13,7 @@ const Footer = () => {
                             <div className="col-span-2">
                                 <div>
                                     <a className="hover:text-cyan-500 text-2xl md:text-4xl font-dancing
-                   text-violet-500 font-bold">CrowdFunding</a>
+                   text-violet-500 font-bold">BDCrowdFunding</a>
                                     <h2 className="text-xl font-bold text-gray-900">Get the latest news!</h2>
 
                                     <p className="mt-4 text-gray-500">

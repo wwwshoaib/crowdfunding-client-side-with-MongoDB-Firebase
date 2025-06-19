@@ -48,7 +48,7 @@ const Navbar = () => {
                     </div>
                   <Link to="/">
                   <a className="hover:text-cyan-500 text-2xl md:text-4xl font-dancing
-                   text-violet-500 font-bold">CrowdFunding</a></Link>
+                   text-violet-500 font-bold">BDCrowdFunding</a></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

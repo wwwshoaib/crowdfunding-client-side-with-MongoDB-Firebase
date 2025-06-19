@@ -15,9 +15,8 @@ const Register = () => {
         const photoURL = e.target.photo.value;
         const password = e.target.password.value;
         const user = { name, email, photoURL, password };
-        console.log(user)
-       
-        // console.log({ name, email, profilePicture, password });
+    
+    
         // Minimum password length validation
         if (password.length < 6) {
             toast.error("Password must be at least 6 characters!");

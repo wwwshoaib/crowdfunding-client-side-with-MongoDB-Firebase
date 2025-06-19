@@ -1,8 +1,34 @@
-# React + Vite
+## Project name: 
+ A crowdfunding Website 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ ## Project Purpose: 
+ A crowdfunding website is a platform where people can raise money for
+different projects, ideas, or causes by inviting others to contribute financial.
+These projects can include personal needs (like medical expenses), creative
+ideas (like making a film or app), and startups (like launching a new product)
 
-Currently, two official plugins are available:
+ ## Live URL: 
+https://bd-crowdfunding.web.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## key features of the project:
+
+  . Data can be managed dynamically using MongoDB
+  . Firebase authentication (login, register)
+  . Implementation of private route
+  . Context API
+  . Device-responsive
+  . Single Page Application (SPA)
+  
+
+  
+## npm packages which I have used in this project are:
+  - firebase
+  - framer-motion
+  - prop-types
+  - react-hot-toast
+  - react-icons
+  - react-router-dom
+  - mongoDB
+  - express
+ 

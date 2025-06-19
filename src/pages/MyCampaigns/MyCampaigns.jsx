@@ -60,7 +60,7 @@ const MyCampaigns = () => {
                   <span className="block py-2 px-3 border-r border-gray-300"> Campaign Title</span>
                 </th>
                 <th className="p-0">
-                  <span className="block py-2 px-3 border-r border-gray-300">Amount (Taka)</span>
+                  <span className="block py-2 px-3 border-r border-gray-300">Amount </span>
                 </th>
                 <th className="p-0">
                   <span className="block py-2 px-3 border-r border-gray-300">Deadline</span>
@@ -77,7 +77,7 @@ const MyCampaigns = () => {
                 >
                   <td className="p-2 md:p-4">{index + 1}</td>
                   <td className="p-2 md:p-4">{campaign.campaign_title}</td>
-                  <td className="p-2 md:p-4">{campaign.donation_amount}</td>
+                  <td className="p-2 md:p-4">Tk. {campaign.donation_amount}</td>
                   <td className="p-2 md:p-4">{campaign.deadline}</td>
                   <td className="relative p-2 md:p-4 flex justify-center space-x-2">
                     <button
