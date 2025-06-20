@@ -2,12 +2,14 @@ import { useLoaderData } from "react-router";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import toast from "react-hot-toast";
+import { Link } from "react-router";
 
 const MyCampaigns = () => {
   const data = useLoaderData();
   const { user } = useContext(AuthContext);
 
   const [campaignData, setCampaignData] = useState(data);
+  
 
   if (!user?.email) {
     return (
@@ -21,9 +23,7 @@ const MyCampaigns = () => {
     (campaign) => campaign.email === user.email
   );
 
-  const handleUpdate = (id) => {
-    console.log("Update clicked for ID:", id);
-  };
+  
 
   // handle delete operation
   const handleDelete = (id) => {
@@ -80,12 +80,12 @@ const MyCampaigns = () => {
                   <td className="p-2 md:p-4">Tk. {campaign.donation_amount}</td>
                   <td className="p-2 md:p-4">{campaign.deadline}</td>
                   <td className="relative p-2 md:p-4 flex justify-center space-x-2">
-                    <button
+                    <Link
+                    to = {`/update/${campaign._id}`}
                       className="bg-blue-500 text-white px-3 py-1 rounded-md text-xs md:text-sm"
-                      onClick={() => handleUpdate(campaign._id)}
                     >
                       Update
-                    </button>
+                    </Link>
                     <button
                       className="bg-red-500 text-white px-3 py-1 rounded-md text-xs md:text-sm"
                       onClick={() => handleDelete(campaign._id)}

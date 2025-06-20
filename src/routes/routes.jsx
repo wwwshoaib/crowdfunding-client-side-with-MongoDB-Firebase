@@ -15,6 +15,7 @@ import ASuccessStory from "../components/ASuccessStory/ASuccessStory";
 import AddCampaign from "../pages/AddCampaign/AddCampaign";
 import Campaigns from "../pages/Campaigns/Campaigns";
 import PrivateRoute from "../routes/PrivateRoute"
+import UpdateCampaign from "../components/UpdateCampaign/UpdateCampaign";
 
 
 
@@ -58,6 +59,12 @@ export const router = createBrowserRouter([
       {
         path: "/readASuccess",
         element: <ASuccessStory></ASuccessStory>,
+      },
+      {
+        path: "/update/:id",
+        element: <UpdateCampaign></UpdateCampaign>,
+        loader: ({params}) => fetch(`http://localhost:5000/addCampaign/${params.id}`),
+        
       },
     ],
   },
