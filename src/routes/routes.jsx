@@ -16,6 +16,7 @@ import AddCampaign from "../pages/AddCampaign/AddCampaign";
 import Campaigns from "../pages/Campaigns/Campaigns";
 import PrivateRoute from "../routes/PrivateRoute"
 import UpdateCampaign from "../components/UpdateCampaign/UpdateCampaign";
+import DetailedCampaign from "../components/DetailedCampaign/DetailedCampaign";
 
 
 
@@ -63,8 +64,12 @@ export const router = createBrowserRouter([
       {
         path: "/update/:id",
         element: <UpdateCampaign></UpdateCampaign>,
-        loader: ({params}) => fetch(`http://localhost:5000/addCampaign/${params.id}`),
-        
+        loader: ({params}) => fetch(`http://localhost:5000/update/${params.id}`),
+      },
+      {
+        path: "/campaign/:id",
+        element: <PrivateRoute> <DetailedCampaign></DetailedCampaign></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/campaign/${params.id}`),
       },
     ],
   },

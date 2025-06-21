@@ -1,23 +1,18 @@
 import { NavLink } from "react-router";
 import Dropdown from "../DropDown/DropDown";
 import { Link } from "react-router";
-import { useContext } from "react";
-import { AuthContext } from "../../providers/AuthProviders";
+
 
 const Navbar = () => {
 
-    const {user} = useContext(AuthContext);
+   
 
     const links = <>
         <li className=" hover:text-green-400"><NavLink to="/">Home</NavLink></li>
         <li className=" hover:text-green-400"><NavLink to="/campaigns">All Campaigns</NavLink></li>
-       {
-        user && <>
          <li className=" hover:text-green-400"><NavLink to="/addCampaign">Add New Campaign</NavLink></li>
         <li className=" hover:text-green-400"><NavLink to="/myCampaign">My Campaign</NavLink></li>
         <li className=" hover:text-green-400" ><NavLink to="/myDonations">My Donations</NavLink></li>
-        </>
-       }
     </>
 
   

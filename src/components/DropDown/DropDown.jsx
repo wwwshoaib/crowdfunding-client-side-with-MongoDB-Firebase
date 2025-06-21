@@ -23,26 +23,20 @@ const Dropdown = () => {
         <div className="flex items-center justify-between space-x-5 bg-white px-4">
           <button className="menu-hover py-2 text-xl md:text-3xl text-black mx-4">
             {user ? (
-              <>
-                {user? (
-                  <div className="flex items-center gap-2">
-                    <img
-                      className="w-9 h-9 rounded-full object-cover"
-                      src={user.photoURL}
-                      alt="User"
-                    />
-                    <p className="text-sm md:text-md">
-                      <strong>{user.displayName}</strong>
-                    </p>
-                  </div>
-                ) : (
-                  <div className="text-sm text-gray-500">Loading user info...</div>
-                )}
-              </>
-
+              <div className="flex items-center gap-2">
+                <img
+                  className="w-9 h-9 rounded-full object-cover"
+                  src={user.photoURL}
+                  alt="User"
+                />
+                <p className="text-sm md:text-md">
+                  <strong>{user.displayName}</strong>
+                </p>
+              </div>
             ) : (
               <CgProfile />
             )}
+
           </button>
           <span>
             <svg
