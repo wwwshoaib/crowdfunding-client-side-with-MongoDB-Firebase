@@ -17,7 +17,7 @@ const AddCampaign = () => {
     const handleAddNewCampaign = e => {
         e.preventDefault();
         const form = e.target;
-        const userName = user.displayName;
+        const name = user.displayName;
         const email = user.email;
         const photoURL = e.target.photo.value;
         const campaign_title = e.target.campaign_title.value;
@@ -26,7 +26,7 @@ const AddCampaign = () => {
         const donation_amount = e.target.donation_amount.value;
         const deadline = e.target.deadline.value;
 
-        const newCampaign = { userName, email, photoURL, campaign_title, campaign_type, description, donation_amount, deadline };
+        const newCampaign = { name, email, photoURL, campaign_title, campaign_type, description, donation_amount, deadline };
        // console.log(newCampaign)
         fetch('http://localhost:5000/addCampaign', {
             method: 'POST',
