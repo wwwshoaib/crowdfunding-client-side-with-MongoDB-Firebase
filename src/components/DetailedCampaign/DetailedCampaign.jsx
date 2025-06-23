@@ -60,7 +60,7 @@ const DetailedCampaign = () => {
                             <div className="mb-4">
                                 <span className="font-bold text-gray-700 dark:text-gray-300">Donation Goal:</span>
                                 <p className="text-gray-600 dark:text-gray-300 text-lg font-semibold mt-2">
-                                    ${donation_amount}
+                                    Tk. {donation_amount}
                                 </p>
                             </div>
 

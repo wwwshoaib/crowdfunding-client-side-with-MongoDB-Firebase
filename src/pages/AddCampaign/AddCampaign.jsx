@@ -25,8 +25,9 @@ const AddCampaign = () => {
         const description = e.target.description.value;
         const donation_amount = e.target.donation_amount.value;
         const deadline = e.target.deadline.value;
+        const total_donation_gained = 0;
 
-        const newCampaign = { name, email, photoURL, campaign_title, campaign_type, description, donation_amount, deadline };
+        const newCampaign = { name, email, photoURL, campaign_title, campaign_type, description, donation_amount, deadline, total_donation_gained };
        // console.log(newCampaign)
         fetch('http://localhost:5000/addCampaign', {
             method: 'POST',

@@ -63,7 +63,7 @@ const MyDonations = () => {
                                     <span className="block py-2 px-3 border-r border-gray-300"> Campaign Title</span>
                                 </th>
                                 <th className="p-0">
-                                    <span className="block py-2 px-3 border-r border-gray-300">Deadline</span>
+                                    <span className="block py-2 px-3 border-r border-gray-300">Donation Date & Time</span>
                                 </th>
                                 <th className="p-0">
                                     <span className="block py-2 px-3 border-r border-gray-300">Donation Amount</span>
@@ -80,16 +80,18 @@ const MyDonations = () => {
                                 >
                                     <td className="p-2 md:p-4">{index + 1}</td>
                                     <td className="p-2 md:p-4">
-                                          {
+                                        {
                                             campaigns?.find(campaign => campaign._id === donation.campaign_id)?.campaign_title || "N/A"
                                         }
 
                                     </td>
 
                                     <td className="p-2 md:p-4">
-                                        {
-                                            campaigns?.find(campaign => campaign._id === donation.campaign_id)?.deadline || "N/A"
-                                        }
+                                        {new Date(donation.date).toLocaleString('en-BD', {
+                                            dateStyle: 'medium',
+                                            timeStyle: 'short',
+                                            hour12: true
+                                        })}
                                     </td>
                                     <td className="p-2 md:p-4">{donation.donation_amount}</td>
 
