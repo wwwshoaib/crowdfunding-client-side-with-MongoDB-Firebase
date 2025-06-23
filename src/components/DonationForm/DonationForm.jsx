@@ -1,13 +1,17 @@
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 
 const DonationForm = () => {
 
     const { user} = useContext(AuthContext);
     const navigate = useNavigate();
+    const { id } = useParams();
+
+    console.log(id);
+    
 
     
 
@@ -20,9 +24,11 @@ const DonationForm = () => {
         const name = user.displayName;
         const email = user.email;
         const donation_amount = e.target.donation.value;
+    
+         const campaign_id = id;
         
 
-         const newDonation = { name, email,  donation_amount };
+         const newDonation = { name, email,  donation_amount, campaign_id };
        // console.log(newCampaign)
         fetch('http://localhost:5000/addDonations', {
             method: 'POST',

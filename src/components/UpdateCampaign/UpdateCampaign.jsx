@@ -5,7 +5,10 @@ import { AuthContext } from '../../providers/AuthProviders';
 
 const UpdateCampaign = () => {
   const singleCampaignData = useLoaderData();
+  
   const { photoURL, campaign_title, campaign_type, description, donation_amount, deadline } = singleCampaignData;
+
+  console.log(singleCampaignData);
   
 
 
@@ -36,7 +39,7 @@ const UpdateCampaign = () => {
       deadline: form.deadline.value
     };
 
-    fetch(`http://localhost:5000/${id}`, {
+    fetch(`http://localhost:5000/addCampaign/${id}`, {
       method: 'PATCH',
       headers: {
         "Content-Type": "application/json"

@@ -1,8 +1,9 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const DetailedCampaign = () => {
     const campaignData = useLoaderData();
+    const {id} = useParams()
     const {
         photoURL,
         campaign_title,
@@ -27,7 +28,7 @@ const DetailedCampaign = () => {
                             </div>
                             <div className="flex  mb-4">
                                 <div className="w-full py-2 px-2">
-                                     <Link to ={'/donate'}
+                                     <Link to ={`/donate/${id}`}
                                      className="bg-lime-500 px-8 py-4 text-white rounded-md"
                                       >Donate</Link>
                                     

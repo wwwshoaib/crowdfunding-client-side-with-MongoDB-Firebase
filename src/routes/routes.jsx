@@ -21,6 +21,7 @@ import DonationForm from "../components/DonationForm/DonationForm";
 
 
 
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -36,7 +37,9 @@ export const router = createBrowserRouter([
         element: <Campaigns></Campaigns>,
         loader: () => fetch('http://localhost:5000/addCampaign'),
       },
-     
+
+
+
       {
         path: "/addCampaign",
         element: <PrivateRoute><AddCampaign></AddCampaign></PrivateRoute>
@@ -48,7 +51,18 @@ export const router = createBrowserRouter([
       },
       {
         path: "/myDonations",
-        element: <PrivateRoute><MyDonations></MyDonations></PrivateRoute>
+        element: <PrivateRoute><MyDonations /></PrivateRoute>,
+        loader: async () => {
+          const [donationsRes, campaignsRes] = await Promise.all([
+            fetch("http://localhost:5000/addDonations"),
+            fetch("http://localhost:5000/addCampaign")
+          ]);
+
+          return {
+            donations: await donationsRes.json(),
+            campaigns: await campaignsRes.json()
+          };
+        }
       },
       {
         path: "/register",
@@ -65,16 +79,17 @@ export const router = createBrowserRouter([
       {
         path: "/update/:id",
         element: <UpdateCampaign></UpdateCampaign>,
-        loader: ({params}) => fetch(`http://localhost:5000/update/${params.id}`),
+        loader: ({ params }) => fetch(`http://localhost:5000/update/${params.id}`),
       },
       {
         path: "/campaign/:id",
         element: <PrivateRoute> <DetailedCampaign></DetailedCampaign></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/campaign/${params.id}`),
+        loader: ({ params }) => fetch(`http://localhost:5000/campaign/${params.id}`),
       },
-       {
-        path: "/donate",
+      {
+        path: "/donate/:id",
         element: <DonationForm></DonationForm>,
+         loader: ({ params }) => fetch(`http://localhost:5000/campaign/${params.id}`),
       },
     ],
   },

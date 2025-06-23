@@ -1,7 +1,10 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const Campaign = ({ campaign }) => {
+
+
+const Campaign = ({campaign}) => {
+    
   const { photoURL, campaign_title, campaign_type, description, donation_amount, deadline, _id } = campaign;
 
   // Function to get first 30 words

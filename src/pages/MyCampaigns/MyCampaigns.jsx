@@ -24,10 +24,9 @@ const MyCampaigns = () => {
   );
 
   
-
   // handle delete operation
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/${id}`, {
+    fetch(`http://localhost:5000/addCampaign/${id}`, {
       method: "DELETE",
     })
     .then(res => res.json())

@@ -29,9 +29,7 @@ const Dropdown = () => {
                   src={user.photoURL}
                   alt="User"
                 />
-                <p className="text-sm md:text-md">
-                  <strong>{user.displayName}</strong>
-                </p>
+              
               </div>
             ) : (
               <CgProfile />
