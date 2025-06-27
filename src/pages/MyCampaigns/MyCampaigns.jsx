@@ -26,21 +26,33 @@ const MyCampaigns = () => {
   
   // handle delete operation
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/addCampaign/${id}`, {
-      method: "DELETE",
-    })
-    .then(res => res.json())
-    .then(result => {
-      const newResult = campaignData.filter((campaign) => id!= campaign._id);
-      setCampaignData(newResult);
-      if (result.deletedCount>0) {
-            toast.success("Data deleted successfully!");
-          } else {
-            toast.error("Something went wrong.");
-          }
-    })
-
-  };
+  toast.custom((t) => (
+    <div className="bg-white p-3 rounded shadow text-sm">
+      <p>Do you want to delete this campaign?</p>
+      <div className="flex justify-end gap-2 mt-2">
+        <button
+          onClick={() => {
+            toast.dismiss(t.id);
+            fetch(`https://crowdfunding-server-beta.vercel.app/addCampaign/${id}`, { method: "DELETE" })
+              .then(res => res.json())
+              .then(result => {
+                if (result.deletedCount > 0) {
+                  setCampaignData(prev => prev.filter(c => c._id !== id));
+                  toast.success("Deleted!");
+                } else toast.error("Failed!");
+              });
+          }}
+          className="bg-red-500 text-white px-2 py-1 rounded"
+        >
+          Yes
+        </button>
+        <button onClick={() => toast.dismiss(t.id)} className="bg-gray-200 px-2 py-1 rounded">
+          No
+        </button>
+      </div>
+    </div>
+  ));
+};
 
   return (
     <div className="bg-white p-8 overflow-auto mt-16 h-screen">

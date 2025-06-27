@@ -3,6 +3,8 @@ import Dropdown from "../DropDown/DropDown";
 import { Link } from "react-router";
 
 
+
+
 const Navbar = () => {
 
    
@@ -51,8 +53,10 @@ const Navbar = () => {
                         {/* log in and log out button  */}
                         
                         {/*  */}
+                        
                       
                     </ul>
+                 
                 </div>
                 <div className="navbar-end">
                     <Dropdown></Dropdown>

@@ -1,13 +1,22 @@
 import { useLoaderData } from "react-router-dom";
 import { Link } from "react-router-dom";
 
+
+
 const RunningCampaigns = () => {
     const campaigns = useLoaderData();
 
     // Filter campaigns: running = donation still needed
+    const today = new Date();
     const runningCampaigns = campaigns
-        .filter(campaign => parseFloat(campaign.total_donation_gained) < parseFloat(campaign.donation_amount))
-        .slice(0, 6); 
+        .filter(campaign => {
+            const deadlineDate = new Date(campaign.deadline);
+            return (
+                parseFloat(campaign.total_donation_gained) < parseFloat(campaign.donation_amount) &&
+                deadlineDate >= today
+            );
+        })
+        .slice(0, 6);
 
     // Function to get first 30 words
     const getShortDescription = (text) => {
@@ -15,6 +24,9 @@ const RunningCampaigns = () => {
         if (words.length <= 20) return text;
         return words.slice(0, 20).join(" ") + "...";
     };
+
+    // 
+      
 
     return (
         <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-10">

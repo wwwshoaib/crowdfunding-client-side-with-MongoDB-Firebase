@@ -4,10 +4,13 @@ import SuccessStory from "../../components/SuccessStory/SuccessStory";
 import Testimonial from "../../components/Testimonial/Testimonial";
 
 
+
 const Home = () => {
     return (
         <div className="w-11/12 mx-auto">
+          
             <Slider></Slider>
+          
             {/* Section: Running campaign */}
             <div>
                 <div className="text-center my-10">

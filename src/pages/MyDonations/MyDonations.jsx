@@ -13,15 +13,6 @@ const MyDonations = () => {
 
 
 
-
-
-
-
-
-
-
-
-
     if (!user?.email) {
         return (
             <div className="text-center py-10">

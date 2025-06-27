@@ -8,6 +8,27 @@
 /* font-delius */
 @import url('https://fonts.googleapis.com/css2?family=Delius&display=swap');
 
+
+
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* CSS for the theme styling */
+.dark-theme {
+  background-color: #222;
+  color: white;
+}
+
+.light-theme {
+  background-color: #f4f4f4;
+  color: black;
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+} 

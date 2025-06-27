@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import {  Bounce } from "react-awesome-reveal";
 
 
 
@@ -15,7 +16,8 @@ const Campaign = ({campaign}) => {
   };
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-4 h-[600px] flex flex-col">
+    < Bounce>
+        <div className="bg-white shadow-md rounded-lg p-4 h-[600px] flex flex-col">
       <div>
         <img
           src={photoURL}
@@ -62,6 +64,10 @@ const Campaign = ({campaign}) => {
         </div>
       </div>
     </div>
+
+    </ Bounce>
+
+  
   );
 };
 

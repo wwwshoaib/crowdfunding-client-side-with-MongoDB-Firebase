@@ -31,12 +31,12 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-         loader: () => fetch('http://localhost:5000/addCampaign'),
+         loader: () => fetch('https://crowdfunding-server-beta.vercel.app/addCampaign'),
       },
       {
         path: "/campaigns",
         element: <Campaigns></Campaigns>,
-        loader: () => fetch('http://localhost:5000/addCampaign'),
+        loader: () => fetch('https://crowdfunding-server-beta.vercel.app/addCampaign'),
       },
 
 
@@ -48,15 +48,15 @@ export const router = createBrowserRouter([
       {
         path: "/myCampaign",
         element: <PrivateRoute><MyCampaign></MyCampaign></PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/addCampaign'),
+        loader: () => fetch('https://crowdfunding-server-beta.vercel.app/addCampaign'),
       },
       {
         path: "/myDonations",
         element: <PrivateRoute><MyDonations /></PrivateRoute>,
         loader: async () => {
           const [donationsRes, campaignsRes] = await Promise.all([
-            fetch("http://localhost:5000/addDonations"),
-            fetch("http://localhost:5000/addCampaign")
+            fetch("https://crowdfunding-server-beta.vercel.app/addDonations"),
+            fetch("https://crowdfunding-server-beta.vercel.app/addCampaign")
           ]);
 
           return {
@@ -80,17 +80,17 @@ export const router = createBrowserRouter([
       {
         path: "/update/:id",
         element: <UpdateCampaign></UpdateCampaign>,
-        loader: ({ params }) => fetch(`http://localhost:5000/update/${params.id}`),
+        loader: ({ params }) => fetch(`https://crowdfunding-server-beta.vercel.app/update/${params.id}`),
       },
       {
         path: "/campaign/:id",
         element: <PrivateRoute> <DetailedCampaign></DetailedCampaign></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/campaign/${params.id}`),
+        loader: ({ params }) => fetch(`https://crowdfunding-server-beta.vercel.app/campaign/${params.id}`),
       },
       {
         path: "/donate/:id",
         element: <DonationForm></DonationForm>,
-         loader: ({ params }) => fetch(`http://localhost:5000/campaign/${params.id}`),
+         loader: ({ params }) => fetch(`https://crowdfunding-server-beta.vercel.app/campaign/${params.id}`),
       },
     ],
   },
