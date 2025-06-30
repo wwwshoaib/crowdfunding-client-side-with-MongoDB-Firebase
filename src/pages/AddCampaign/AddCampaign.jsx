@@ -29,7 +29,7 @@ const AddCampaign = () => {
 
         const newCampaign = { name, email, photoURL, campaign_title, campaign_type, description, donation_amount, deadline, total_donation_gained };
        // console.log(newCampaign)
-        fetch('https://crowdfunding-server-beta.vercel.app/addCampaign', {
+        fetch('https://crowdfunding-server-b5i9.onrender.com/addCampaign', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"

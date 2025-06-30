@@ -55,7 +55,7 @@ export const router = createBrowserRouter([
         element: <PrivateRoute><MyDonations /></PrivateRoute>,
         loader: async () => {
           const [donationsRes, campaignsRes] = await Promise.all([
-            fetch("https://crowdfunding-server-beta.vercel.app/addDonations"),
+            fetch("https://crowdfunding-server-beta.vercel.app/myDonations"),
             fetch("https://crowdfunding-server-beta.vercel.app/addCampaign")
           ]);
 
@@ -90,7 +90,7 @@ export const router = createBrowserRouter([
       {
         path: "/donate/:id",
         element: <DonationForm></DonationForm>,
-         loader: ({ params }) => fetch(`https://crowdfunding-server-beta.vercel.app/campaign/${params.id}`),
+         loader: ({ params }) => fetch(`https://crowdfunding-server-b5i9.onrender.com/campaign/${params.id}`),
       },
     ],
   },

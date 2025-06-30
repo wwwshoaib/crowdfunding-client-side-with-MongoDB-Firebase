@@ -45,7 +45,7 @@ const DonationForm = () => {
 
          const newDonation = { name, email,  donation_amount, campaign_id,   date: new Date() };
        // console.log(newCampaign)
-        fetch('https://crowdfunding-server-beta.vercel.app/addDonations', {
+        fetch('https://crowdfunding-server-beta.vercel.app/myDonations', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"

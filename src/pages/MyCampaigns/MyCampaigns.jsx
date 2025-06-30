@@ -33,7 +33,7 @@ const MyCampaigns = () => {
         <button
           onClick={() => {
             toast.dismiss(t.id);
-            fetch(`https://crowdfunding-server-beta.vercel.app/addCampaign/${id}`, { method: "DELETE" })
+            fetch(`https://crowdfunding-server-b5i9.onrender.com/addCampaign/${id}`, { method: "DELETE" })
               .then(res => res.json())
               .then(result => {
                 if (result.deletedCount > 0) {
