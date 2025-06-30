@@ -58,10 +58,7 @@ const Dropdown = () => {
         <div className="invisible absolute z-50 flex w-full flex-col bg-gray-100 py-4 px-4 text-gray-800 shadow-xl group-hover:visible">
           {user ? (
             <div className="flex flex-col space-y-2">
-
               <p>{user.displayName}</p>
-              
-             
               <button
               
                 onClick={handleSignOut}
