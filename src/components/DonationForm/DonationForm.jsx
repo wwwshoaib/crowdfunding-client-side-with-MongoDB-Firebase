@@ -2,20 +2,17 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router";
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 
 
 const DonationForm = () => {
 
-    const { user} = useContext(AuthContext);
-    const navigate = useNavigate();
-    const { id } = useParams();
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { id } = useParams();
 
-    console.log(id);
-    
-
-      const [campaign, setCampaign] = useState(null);
+  const [campaign, setCampaign] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -25,50 +22,50 @@ const DonationForm = () => {
         setCampaign(data);
         setLoading(false);
       });
-  }, [id]);  
+  }, [id]);
 
 
-    const isGoalReached = campaign?.total_donation_gained >= campaign?.donation_amount;
-
-  
-
-    const handleDonationForm = (e) => {
-        e.preventDefault();
-
-        const form = e.target;
-        const name = user.displayName;
-        const email = user.email;
-        const donation_amount = e.target.donation.value;
-         const campaign_id = id;
-        
-        
-
-         const newDonation = { name, email,  donation_amount, campaign_id,   date: new Date() };
-       // console.log(newCampaign)
-        fetch('https://crowdfunding-server-beta.vercel.app/myDonations', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(newDonation)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.insertedId) {
-                    toast.success("Your donation sent successfully!")
-                      navigate("/myDonations");
+  const isGoalReached = campaign?.total_donation_gained >= campaign?.donation_amount;
 
 
-                }
-            })
+
+  const handleDonationForm = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const name = user.displayName;
+    const email = user.email;
+    const donation_amount = e.target.donation.value;
+    const campaign_id = id;
 
 
-        //clear the form after the submission
-        form.reset();
-       
-    };
 
-     return (
+    const newDonation = { name, email, donation_amount, campaign_id, date: new Date() };
+    // console.log(newCampaign)
+    fetch('https://crowdfunding-server-beta.vercel.app/myDonations', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newDonation)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.insertedId) {
+          toast.success("Your donation sent successfully!")
+          navigate("/myDonations");
+
+
+        }
+      })
+
+
+    //clear the form after the submission
+    form.reset();
+
+  };
+
+  return (
     <div className="w-11/12 mx-auto bg-gray-100 min-h-screen flex items-center justify-center relative">
       {/* Background and other parts... */}
       <div className="relative z-10 bg-white p-8 rounded-md shadow-lg w-11/12 max-w-md">
@@ -101,9 +98,8 @@ const DonationForm = () => {
               <button
                 type="submit"
                 disabled={isGoalReached}
-                className={`${
-                  isGoalReached ? "bg-gray-400 cursor-not-allowed" : "bg-cyan-500 hover:bg-cyan-700"
-                } text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline`}
+                className={`${isGoalReached ? "bg-gray-400 cursor-not-allowed" : "bg-cyan-500 hover:bg-cyan-700"
+                  } text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline`}
               >
                 {isGoalReached ? "Goal Reached" : "Donate"}
               </button>
