@@ -1,15 +1,32 @@
-import { useLoaderData } from "react-router";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import toast from "react-hot-toast";
-import { Link } from "react-router";
+import { Link } from "react-router-dom"; // ✅ ঠিক করা হলো
+import { useQuery } from "@tanstack/react-query";
+import Lottie from "lottie-react";
+import LottieSpinner from '../../assets/lottie/spinner.json';
 
 const MyCampaigns = () => {
-  const data = useLoaderData();
   const { user } = useContext(AuthContext);
 
-  const [campaignData, setCampaignData] = useState(data);
-  
+  const {
+    isPending,
+    error,
+    data: campaigns = [],
+    refetch,
+  } = useQuery({
+    queryKey: ['campaigns data'],
+    queryFn: async () => {
+      const res = await fetch('http://localhost:5000/addCampaign');
+      if (!res.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return res.json();
+    },
+  });
+
+  if (isPending) return <Lottie animationData={LottieSpinner} />;
+  if (error) return <p>Error: {error.message}</p>;
 
   if (!user?.email) {
     return (
@@ -19,40 +36,46 @@ const MyCampaigns = () => {
     );
   }
 
-  const filteredData = campaignData?.filter(
+  const filteredData = campaigns.filter(
     (campaign) => campaign.email === user.email
   );
 
-  
-  // handle delete operation
+  // ✅ Updated delete handler with refetch
   const handleDelete = (id) => {
-  toast.custom((t) => (
-    <div className="bg-white p-3 rounded shadow text-sm">
-      <p>Do you want to delete this campaign?</p>
-      <div className="flex justify-end gap-2 mt-2">
-        <button
-          onClick={() => {
-            toast.dismiss(t.id);
-            fetch(`https://crowdfunding-server-beta.vercel.app/addCampaign/${id}`, { method: "DELETE" })
-              .then(res => res.json())
-              .then(result => {
-                if (result.deletedCount > 0) {
-                  setCampaignData(prev => prev.filter(c => c._id !== id));
-                  toast.success("Deleted!");
-                } else toast.error("Failed!");
-              });
-          }}
-          className="bg-red-500 text-white px-2 py-1 rounded"
-        >
-          Yes
-        </button>
-        <button onClick={() => toast.dismiss(t.id)} className="bg-gray-200 px-2 py-1 rounded">
-          No
-        </button>
+    toast.custom((t) => (
+      <div className="bg-white p-3 rounded shadow text-sm">
+        <p>Do you want to delete this campaign?</p>
+        <div className="flex justify-end gap-2 mt-2">
+          <button
+            onClick={() => {
+              toast.dismiss(t.id);
+              fetch(`http://localhost:5000/addCampaign/${id}`, {
+                method: "DELETE",
+              })
+                .then((res) => res.json())
+                .then((result) => {
+                  if (result.deletedCount > 0) {
+                    toast.success("Campaign was deleted successfully!");
+                    refetch(); 
+                  } else {
+                    toast.error("Failed!");
+                  }
+                });
+            }}
+            className="bg-red-500 text-white px-2 py-1 rounded"
+          >
+            Yes
+          </button>
+          <button
+            onClick={() => toast.dismiss(t.id)}
+            className="bg-gray-200 px-2 py-1 rounded"
+          >
+            No
+          </button>
+        </div>
       </div>
-    </div>
-  ));
-};
+    ));
+  };
 
   return (
     <div className="bg-white p-8 overflow-auto mt-16 h-screen">
@@ -68,31 +91,27 @@ const MyCampaigns = () => {
                   <span className="block py-2 px-3 border-r border-gray-300">Sl. no.</span>
                 </th>
                 <th className="p-0">
-                  <span className="block py-2 px-3 border-r border-gray-300"> Campaign Title</span>
+                  <span className="block py-2 px-3 border-r border-gray-300">Campaign Title</span>
                 </th>
                 <th className="p-0">
-                  <span className="block py-2 px-3 border-r border-gray-300">Amount </span>
+                  <span className="block py-2 px-3 border-r border-gray-300">Amount</span>
                 </th>
                 <th className="p-0">
                   <span className="block py-2 px-3 border-r border-gray-300">Deadline</span>
                 </th>
-
                 <th className="p-4 text-xs md:text-sm">Actions</th>
               </tr>
             </thead>
             <tbody>
               {filteredData.map((campaign, index) => (
-                <tr
-                  key={campaign._id}
-                  className="border-b text-xs md:text-sm text-center text-gray-800"
-                >
+                <tr key={campaign._id} className="border-b text-xs md:text-sm text-center text-gray-800">
                   <td className="p-2 md:p-4">{index + 1}</td>
                   <td className="p-2 md:p-4">{campaign.campaign_title}</td>
                   <td className="p-2 md:p-4">Tk. {campaign.donation_amount}</td>
                   <td className="p-2 md:p-4">{campaign.deadline}</td>
                   <td className="relative p-2 md:p-4 flex justify-center space-x-2">
                     <Link
-                    to = {`/update/${campaign._id}`}
+                      to={`/update/${campaign._id}`}
                       className="bg-blue-500 text-white px-3 py-1 rounded-md text-xs md:text-sm"
                     >
                       Update
@@ -108,7 +127,7 @@ const MyCampaigns = () => {
               ))}
               {filteredData.length === 0 && (
                 <tr>
-                  <td colSpan="4" className="text-center py-4 text-gray-500">
+                  <td colSpan="5" className="text-center py-4 text-gray-500">
                     No campaigns found.
                   </td>
                 </tr>

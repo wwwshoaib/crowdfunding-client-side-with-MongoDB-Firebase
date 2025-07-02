@@ -36,7 +36,7 @@ const UpdateCampaign = () => {
       deadline: form.deadline.value
     };
 
-    fetch(`https://crowdfunding-server-beta.vercel.app/addCampaign/${id}`, {
+    fetch(`http://localhost:5000/addCampaign/${id}`, {
       method: 'PATCH',
       headers: {
         "Content-Type": "application/json"

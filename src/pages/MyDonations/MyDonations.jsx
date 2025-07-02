@@ -1,13 +1,49 @@
-import { useLoaderData } from "react-router";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
+import { useQuery } from "@tanstack/react-query";
+import Lottie from "lottie-react";
+import LottieSpinner from '../../assets/lottie/spinner.json'
 
 const MyDonations = () => {
-  // Safe destructuring with fallback
-  const { donations = [], campaigns = [] } = useLoaderData();
   const { user } = useContext(AuthContext);
 
-  // No user fallback
+  // Campaigns Query using tanstack query
+  const {
+    isPending: campaignsLoading,
+    error: campaignsError,
+    data: campaigns,
+  } = useQuery({
+    queryKey: ['campaigns data'],
+    queryFn: async () => {
+      const res = await fetch('http://localhost:5000/addCampaign');
+      if (!res.ok) throw new Error('Network response was not ok');
+      return res.json();
+    },
+  });
+
+  // Donations Query using tanstack query
+  const {
+    isPending: donationsLoading,
+    error: donationsError,
+    data: donations,
+  } = useQuery({
+    queryKey: ['donations data'],
+    queryFn: async () => {
+      const res = await fetch('http://localhost:5000/myDonations');
+      if (!res.ok) throw new Error('Network response was not ok');
+      return res.json();
+    },
+  });
+
+  // Unified loading and error check
+  if (campaignsLoading || donationsLoading) {
+    return <Lottie animationData={LottieSpinner}></Lottie>;
+  }
+
+  if (campaignsError || donationsError) {
+    return <p>Error loading data.</p>;
+  }
+
   if (!user?.email) {
     return (
       <div className="text-center py-10">
@@ -16,9 +52,9 @@ const MyDonations = () => {
     );
   }
 
-  // Filter donations for current user
+  // Filter donations
   const filteredData = Array.isArray(donations)
-    ? donations.filter((donation) => donation.email === user.email)
+    ? donations.filter(donation => donation.email === user.email)
     : [];
 
   return (
@@ -48,7 +84,7 @@ const MyDonations = () => {
                     <td className="p-2 md:p-4">{index + 1}</td>
                     <td className="p-2 md:p-4">
                       {
-                        campaigns.find(campaign => campaign._id === donation.campaign_id)?.campaign_title || "N/A"
+                        campaigns.find(c => c._id === donation.campaign_id)?.campaign_title || "N/A"
                       }
                     </td>
                     <td className="p-2 md:p-4">
