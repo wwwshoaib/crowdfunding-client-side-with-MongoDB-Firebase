@@ -1,13 +1,38 @@
-import { useLoaderData } from "react-router";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 
 const MyDonations = () => {
-  // Safe destructuring with fallback
-  const { donations = [], campaigns = [] } = useLoaderData();
   const { user } = useContext(AuthContext);
+  const [loading, setLoading] = useState(true);
+  const [donations, setDonations] = useState([]);
+  const [campaigns, setCampaigns] = useState([]);
 
-  // No user fallback
+  useEffect(() => {
+    if (!user?.email) return;
+
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const [donationRes, campaignRes] = await Promise.all([
+          fetch("https://your-server-url.com/donations"), // Replace with real endpoint
+          fetch("https://your-server-url.com/campaigns")
+        ]);
+
+        const donationData = await donationRes.json();
+        const campaignData = await campaignRes.json();
+
+        setDonations(donationData);
+        setCampaigns(campaignData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [user]);
+
   if (!user?.email) {
     return (
       <div className="text-center py-10">
@@ -16,10 +41,18 @@ const MyDonations = () => {
     );
   }
 
-  // Filter donations for current user
   const filteredData = Array.isArray(donations)
     ? donations.filter((donation) => donation.email === user.email)
     : [];
+
+  // 🔄 Show Spinner While Loading
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <span className="loading loading-spinner text-primary w-16 h-16"></span>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white p-8 overflow-auto mt-16 h-screen">
@@ -29,7 +62,6 @@ const MyDonations = () => {
         <p className="font-semibold">Email: {user.email}</p>
       </div>
 
-      {/* Table */}
       <div className="relative overflow-auto">
         <div className="overflow-x-auto rounded-lg">
           <table className="min-w-full bg-white border mb-20">
@@ -47,9 +79,7 @@ const MyDonations = () => {
                   <tr key={donation._id} className="border-b text-xs md:text-sm text-center text-gray-800">
                     <td className="p-2 md:p-4">{index + 1}</td>
                     <td className="p-2 md:p-4">
-                      {
-                        campaigns.find(campaign => campaign._id === donation.campaign_id)?.campaign_title || "N/A"
-                      }
+                      {campaigns.find(c => c._id === donation.campaign_id)?.campaign_title || "N/A"}
                     </td>
                     <td className="p-2 md:p-4">
                       {new Date(donation.date).toLocaleString('en-BD', {
