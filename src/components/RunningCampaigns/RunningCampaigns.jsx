@@ -1,14 +1,30 @@
-import { useLoaderData } from "react-router-dom";
+
 import { Link } from "react-router-dom";
+import { useQuery} from "@tanstack/react-query";
+import Lottie from "lottie-react";
+import LottieSpinner from '../../assets/lottie/spinner.json'
 
 
 
 const RunningCampaigns = () => {
-    const campaigns = useLoaderData();
+  const { isPending, error, data = [] } = useQuery({
+    queryKey: ['campaigns data'],
+    queryFn: async () => {
+      const res = await fetch('https://crowdfunding-server-beta.vercel.app/addCampaign');
+      if (!res.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return res.json();
+    },
+  });
+
+
+  if (isPending) return <Lottie animationData={LottieSpinner} />;
+  if (error) return <p>Error: {error.message}</p>;
 
     // Filter campaigns: running = donation still needed
     const today = new Date();
-    const runningCampaigns = campaigns
+    const runningCampaigns = data
         .filter(campaign => {
             const deadlineDate = new Date(campaign.deadline);
             return (
