@@ -16,7 +16,7 @@ const DonationForm = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://crowdfunding-server-beta.vercel.app/campaign/${id}`)
+    fetch(`https://crowdfunding-server-b5i9.onrender.com/campaign/${id}`)
       .then(res => res.json())
       .then(data => {
         setCampaign(data);
@@ -42,7 +42,7 @@ const DonationForm = () => {
 
     const newDonation = { name, email, donation_amount, campaign_id, date: new Date() };
     // console.log(newCampaign)
-    fetch('https://crowdfunding-server-beta.vercel.app/myDonations', {
+    fetch('https://crowdfunding-server-b5i9.onrender.com/myDonations', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"

@@ -17,9 +17,9 @@ const MyCampaigns = () => {
   } = useQuery({
     queryKey: ['campaigns data'],
     queryFn: async () => {
-      const res = await fetch('https://crowdfunding-server-beta.vercel.app/addCampaign');
+      const res = await fetch('https://crowdfunding-server-b5i9.onrender.com/addCampaign');
       if (!res.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error('Server response was not OK. Please wait a few minutes...');
       }
       return res.json();
     },
@@ -49,7 +49,7 @@ const MyCampaigns = () => {
           <button
             onClick={() => {
               toast.dismiss(t.id);
-              fetch(`https://crowdfunding-server-beta.vercel.app/addCampaign/${id}`, {
+              fetch(`https://crowdfunding-server-b5i9.onrender.com/addCampaign/${id}`, {
                 method: "DELETE",
               })
                 .then((res) => res.json())

@@ -110,13 +110,30 @@ const Testimonial = () => {
                     <div id="carousel" className="overflow-hidden relative">
                         <div id="testimonial-track" className="flex transition-transform duration-500 ease-in-out">
                             {/* Map over testimonials for better scalability */}
-                            {[{
+                            {[
+                                  {
+                                name: "Md. Shoaib Ahmed",
+                                title: "Teacher, Aspiring Web Developer",
+                                image: "https://i.postimg.cc/PJhP65FZ/decd0968-78c3-417b-9c38-8f9173bf23b5.jpg",
+                                rating: 5,
+                                text: "Our flood relief initiative in Sylhet was successful because of crowdfunding. The quick response and ease of use made it simple to gather help when we needed it most."
+                            },
+                                {
                                 name: "Alia Begum",
                                 title: "SME Employee",
                                 image: "https://i.postimg.cc/gjBNVQNC/5.jpg",
                                 rating: 5,
                                 text: "Thanks to this platform, I raised enough funds to launch my eco-friendly bag business in Dhaka. The support I received from donors was overwhelming. Highly recommended for entrepreneurs!"
-                            }, {
+                            }, 
+                              {
+                                name: "Md. Shoaib Ahmed",
+                                title: "Teacher, Aspiring Web Developer",
+                                image: "https://i.postimg.cc/PJhP65FZ/decd0968-78c3-417b-9c38-8f9173bf23b5.jpg",
+                                rating: 5,
+                                text: "Our flood relief initiative in Sylhet was successful because of crowdfunding. The quick response and ease of use made it simple to gather help when we needed it most."
+                            },
+                          
+                            {
                                 name: "Milton Khandoker",
                                 title: "A Tailor",
                                 image: "https://i.postimg.cc/8chL5Yxd/6.jpg",

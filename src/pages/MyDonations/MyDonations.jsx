@@ -15,8 +15,8 @@ const MyDonations = () => {
   } = useQuery({
     queryKey: ['campaigns data'],
     queryFn: async () => {
-      const res = await fetch('https://crowdfunding-server-beta.vercel.app/addCampaign');
-      if (!res.ok) throw new Error('Network response was not ok');
+      const res = await fetch('https://crowdfunding-server-b5i9.onrender.com/addCampaign');
+      if (!res.ok) throw new Error('Server response was not OK. Please wait a few minutes..');
       return res.json();
     },
   });
@@ -29,8 +29,8 @@ const MyDonations = () => {
   } = useQuery({
     queryKey: ['donations data'],
     queryFn: async () => {
-      const res = await fetch('https://crowdfunding-server-beta.vercel.app/myDonations');
-      if (!res.ok) throw new Error('Network response was not ok');
+      const res = await fetch('https://crowdfunding-server-b5i9.onrender.com/myDonations');
+      if (!res.ok) throw new Error('Server response was not OK. Please wait a few minutes..');
       return res.json();
     },
   });
