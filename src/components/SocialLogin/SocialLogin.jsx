@@ -1,5 +1,5 @@
 
-import AuthContext from "../../Context/AuthContext";
+import { AuthContext } from "../../providers/AuthProviders";
 import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 
