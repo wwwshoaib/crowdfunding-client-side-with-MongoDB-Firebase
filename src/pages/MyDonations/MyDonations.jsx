@@ -27,12 +27,13 @@ const MyDonations = () => {
     error: donationsError,
     data: donations,
   } = useQuery({
-    queryKey: ['donations data'],
+    data: donations,
     queryFn: async () => {
-      const res = await fetch('https://crowdfunding-server-beta.vercel.app/myDonations');
+      const res = await fetch(`https://crowdfunding-server-beta.vercel.app/myDonations?email=${user.email}`);
       if (!res.ok) throw new Error('Server response was not OK. Please wait a few minutes..');
       return res.json();
     },
+
   });
 
   // Unified loading and error check

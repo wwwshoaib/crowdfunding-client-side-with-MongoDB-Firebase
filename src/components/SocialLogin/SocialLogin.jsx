@@ -1,23 +1,19 @@
 
-import { AuthContext } from "../../providers/AuthProviders";
+import AuthContext from "../../Context/AuthContext";
 import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { useNavigate } from "react-router";
 
 
 
 const SocialLogin = () => {
     const { signInWithGoogle } = useContext(AuthContext);
 
-    const navaigate = useNavigate();
-
 
     const handleGoogleLogin = () => {
 
         signInWithGoogle()
             .then(result => {
-                console.log(result);
-                navaigate('/');
+                console.log(result)
             })
             .catch(error => {
                 console.log(error.message)

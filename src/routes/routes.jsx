@@ -20,8 +20,6 @@ import DetailedCampaign from "../components/DetailedCampaign/DetailedCampaign";
 import DonationForm from "../components/DonationForm/DonationForm";
 
 
-
-
 export const router = createBrowserRouter([
   {
     path: "/",
