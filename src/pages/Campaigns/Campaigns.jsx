@@ -7,7 +7,7 @@ const Campaigns = () => {
   const { isPending, error, data = [] } = useQuery({
     queryKey: ['campaigns data'],
     queryFn: async () => {
-      const res = await fetch('http://localhost:5000/addCampaign');
+      const res = await fetch('https://crowdfunding-server-beta.vercel.app/addCampaign');
       if (!res.ok) {
         throw new Error('Server response was not OK. Please wait a few minutes.');
       }

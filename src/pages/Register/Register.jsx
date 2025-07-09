@@ -66,7 +66,7 @@ const Register = () => {
       
 
       
-         fetch('http://localhost:5000/users', {
+         fetch('https://crowdfunding-server-beta.vercel.app/users', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
