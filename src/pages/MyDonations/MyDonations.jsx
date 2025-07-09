@@ -15,7 +15,7 @@ const MyDonations = () => {
   } = useQuery({
     queryKey: ['campaigns data'],
     queryFn: async () => {
-      const res = await fetch('https://crowdfunding-server-beta.vercel.app/addCampaign');
+      const res = await fetch('http://localhost:5000/addCampaign');
       if (!res.ok) throw new Error('Server response was not OK. Please wait a few minutes..');
       return res.json();
     },
@@ -29,7 +29,7 @@ const MyDonations = () => {
   } = useQuery({
     queryKey: ['donations data'],
     queryFn: async () => {
-      const res = await fetch('https://crowdfunding-server-beta.vercel.app/myDonations');
+      const res = await fetch('http://localhost:5000/myDonations');
       if (!res.ok) throw new Error('Server response was not OK. Please wait a few minutes..');
       return res.json();
     },
