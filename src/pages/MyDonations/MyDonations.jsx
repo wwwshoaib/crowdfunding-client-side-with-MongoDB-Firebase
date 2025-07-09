@@ -53,7 +53,7 @@ const MyDonations = () => {
             <thead>
               <tr className="bg-[#2B4DC994] text-center text-xs md:text-sm font-thin text-white">
                 <th className="p-0"><span className="block py-2 px-3 border-r border-gray-300">Sl. no.</span></th>
-                <th className="p-0"><span className="block py-2 px-3 border-r border-gray-300">Campaign Title</span></th>
+               
                 <th className="p-0"><span className="block py-2 px-3 border-r border-gray-300">Donation Date & Time</span></th>
                 <th className="p-0"><span className="block py-2 px-3 border-r border-gray-300">Donation Amount</span></th>
               </tr>
@@ -63,7 +63,7 @@ const MyDonations = () => {
                 filteredData.map((donation, index) => (
                   <tr key={donation._id} className="border-b text-xs md:text-sm text-center text-gray-800">
                     <td className="p-2 md:p-4">{index + 1}</td>
-                    <td className="p-2 md:p-4">{donation.campaign_title || "N/A"}</td>
+                   
                     <td className="p-2 md:p-4">
                       {new Date(donation.date).toLocaleString('en-BD', {
                         dateStyle: 'medium',
