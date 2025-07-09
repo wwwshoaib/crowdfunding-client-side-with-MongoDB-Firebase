@@ -2,9 +2,9 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../providers/AuthProviders";
 import toast from "react-hot-toast";
-   import { FcGoogle } from "react-icons/fc";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 const Login = () => {
-    const { signInUser, setUser,  signInWithGoogle } = useContext(AuthContext);
+    const { signInUser, setUser} = useContext(AuthContext);
     const navigate = useNavigate();
     const handleLogin = e => {
         e.preventDefault();
@@ -31,17 +31,7 @@ const Login = () => {
         form.reset();
     };
 
-    // handle google sign in
-    const handleGoogleSignIn = () => {
-         signInWithGoogle()
-         .then(result =>{
-            console.log(result.user);
-            navigate("/")
-         })
-         .catch(error =>
-            console.log('Error:', error.message)
-         )
-    }
+   
     return (
         <div className="w-11/12 mx-auto">
             <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 ">
@@ -110,22 +100,7 @@ const Login = () => {
                     
                     {/*  */}
                      {/* sign in google */}
-                     <div className="flex justify-center pt-5 text-xl md:text-2xl text-center ">
-                     
-                           <p>or,</p>
-                     </div>
-                    <div className="flex justify-center py-5 text-lg md:text-xl text-center ">
-                     
-                     <button onClick={handleGoogleSignIn}
-                     className="flex justify-center items-center">
-                          <h1> Sign in with Google, &nbsp; </h1>  
-                            <FcGoogle />
-                           
-                     </button>
-                   
-                    </div>
-                   
-                 
+                     <SocialLogin></SocialLogin>
                 </div>
                 
             </div>

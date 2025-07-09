@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../providers/AuthProviders";
 import toast from 'react-hot-toast';
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 
 const Register = () => {
@@ -185,6 +186,7 @@ const Register = () => {
                                 </span>
                             </div>
                         </form>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
