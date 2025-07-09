@@ -2,35 +2,31 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import { useQuery } from "@tanstack/react-query";
 import Lottie from "lottie-react";
-import LottieSpinner from '../../assets/lottie/spinner.json'
+import LottieSpinner from '../../assets/lottie/spinner.json';
 
 const MyDonations = () => {
   const { user } = useContext(AuthContext);
 
- 
-
-  // Donations Query using tanstack query
   const {
     isPending: donationsLoading,
     error: donationsError,
     data: donations,
   } = useQuery({
-    data: donations,
+    queryKey: ['donations', user?.email],
     queryFn: async () => {
       const res = await fetch(`https://crowdfunding-server-beta.vercel.app/myDonations?email=${user.email}`);
       if (!res.ok) throw new Error('Server response was not OK. Please wait a few minutes..');
       return res.json();
     },
-
+    enabled: !!user?.email,
   });
 
-  // Unified loading and error check
-  if ( donationsLoading) {
+  if (donationsLoading) {
     return <Lottie animationData={LottieSpinner}></Lottie>;
   }
 
-  if ( donationsError) {
-    return <p>Error loading data.</p>;
+  if (donationsError) {
+    return <p>Error loading data: {donationsError.message}</p>;
   }
 
   if (!user?.email) {
@@ -41,10 +37,7 @@ const MyDonations = () => {
     );
   }
 
-  // Filter donations
-  const filteredData = Array.isArray(donations)
-    ? donations.filter(donation => donation.email === user.email)
-    : [];
+  const filteredData = Array.isArray(donations) ? donations : [];
 
   return (
     <div className="bg-white p-8 overflow-auto mt-16 h-screen">
@@ -54,7 +47,6 @@ const MyDonations = () => {
         <p className="font-semibold">Email: {user.email}</p>
       </div>
 
-      {/* Table */}
       <div className="relative overflow-auto">
         <div className="overflow-x-auto rounded-lg">
           <table className="min-w-full bg-white border mb-20">
@@ -71,11 +63,7 @@ const MyDonations = () => {
                 filteredData.map((donation, index) => (
                   <tr key={donation._id} className="border-b text-xs md:text-sm text-center text-gray-800">
                     <td className="p-2 md:p-4">{index + 1}</td>
-                    <td className="p-2 md:p-4">
-                      {
-                        donations.find(c => c._id === donation.campaign_id)?.title || "N/A"
-                      }
-                    </td>
+                    <td className="p-2 md:p-4">{donation.campaign_title || "N/A"}</td>
                     <td className="p-2 md:p-4">
                       {new Date(donation.date).toLocaleString('en-BD', {
                         dateStyle: 'medium',
