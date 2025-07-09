@@ -7,19 +7,7 @@ import LottieSpinner from '../../assets/lottie/spinner.json'
 const MyDonations = () => {
   const { user } = useContext(AuthContext);
 
-  // Campaigns Query using tanstack query
-  const {
-    isPending: campaignsLoading,
-    error: campaignsError,
-    data: campaigns,
-  } = useQuery({
-    queryKey: ['campaigns data'],
-    queryFn: async () => {
-      const res = await fetch('https://crowdfunding-server-beta.vercel.app/addCampaign');
-      if (!res.ok) throw new Error('Server response was not OK. Please wait a few minutes..');
-      return res.json();
-    },
-  });
+ 
 
   // Donations Query using tanstack query
   const {
@@ -37,11 +25,11 @@ const MyDonations = () => {
   });
 
   // Unified loading and error check
-  if (campaignsLoading || donationsLoading) {
+  if ( donationsLoading) {
     return <Lottie animationData={LottieSpinner}></Lottie>;
   }
 
-  if (campaignsError || donationsError) {
+  if ( donationsError) {
     return <p>Error loading data.</p>;
   }
 
@@ -85,7 +73,7 @@ const MyDonations = () => {
                     <td className="p-2 md:p-4">{index + 1}</td>
                     <td className="p-2 md:p-4">
                       {
-                        campaigns.find(c => c._id === donation.campaign_id)?.campaign_title || "N/A"
+                        donations.find(c => c._id === donation.campaign_id)?.title || "N/A"
                       }
                     </td>
                     <td className="p-2 md:p-4">
