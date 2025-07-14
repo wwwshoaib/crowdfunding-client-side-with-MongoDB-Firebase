@@ -116,12 +116,12 @@ const MyCampaigns = () => {
                     >
                       Update
                     </Link>
-                    <button
+                    <Link
                       className="bg-red-500 text-white px-3 py-1 rounded-md text-xs md:text-sm"
                       onClick={() => handleDelete(campaign._id)}
                     >
                       Delete
-                    </button>
+                    </Link>
                   </td>
                 </tr>
               ))}

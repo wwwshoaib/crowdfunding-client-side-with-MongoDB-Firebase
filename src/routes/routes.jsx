@@ -50,17 +50,8 @@ export const router = createBrowserRouter([
       {
         path: "/myDonations",
         element: <PrivateRoute><MyDonations></MyDonations></PrivateRoute>,
-        loader: async () => {
-          const [donationsRes, campaignsRes] = await Promise.all([
-            fetch("https://crowdfunding-server-beta.vercel.app/myDonations"),
-            fetch("https://crowdfunding-server-beta.vercel.app/addCampaign")
-          ]);
-
-          return {
-            donations: await donationsRes.json(),
-            campaigns: await campaignsRes.json()
-          };
-        }
+        loader: () => fetch('https://crowdfunding-server-beta.vercel.app/addCampaign'),
+       
       },
       {
         path: "/register",
